@@ -14,7 +14,15 @@ def make_character(character_name: str):
 
 
 def describe_current_location(board, character):
-    pass
+    # not quite clear about this one, what should we return, x,y of current location? and maybe N/E/W/S?
+    # or we should return the whole board as a map?
+    north = board.get((character["X"], character["Y"] + 1), "Boundary")
+    east = board.get((character["X"] + 1, character["Y"]), "Boundary")
+    west = board.get((character["X"] - 1, character["Y"]), "Boundary")
+    south = board.get((character["X"], character["Y"] - 1), "Boundary")
+    print(f"\t\t\tNorth: {north}")
+    print(f"West:{west}| Current:({character['X']},{character['Y']}) |East:{east}")
+    print(f"\t\t\tSouth: {south}")
 
 
 def get_user_choice():
