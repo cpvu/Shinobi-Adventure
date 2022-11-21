@@ -10,17 +10,17 @@ def generate_room_type():
 
 
 def make_board(row, column):
-    board = {}
-    for k in range(row):
-        for v in range(column):
-            board.update({(k, v): generate_room_type()})
+    board = {(k, v): generate_room_type() for k in range(row) for v in range(column)}
+    # for k in range(row):
+    #     for v in range(column):
+    #         board.update({(k, v): generate_room_type()})
     return board
 
 
 def main():
     # rows = input("Enter the amount of rows:")
     # columns = input("Enter the amount of columns:")
-    print(make_board())
+    print(make_board(10, 10))
 
 
 if __name__ == '__main__':

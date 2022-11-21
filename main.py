@@ -5,14 +5,12 @@ A01291758
 Hanxiao Mao
 A01293003
 """
+from makeboard import make_board
 
 
-def make_board(row: int, column: int):
-    pass
-
-
-def make_character(str: str):
-    pass
+def make_character(character_name: str):
+    character = {"Name": character_name, "X": 0, "Y": 0, "Current HP": 10, "Max HP": 10, "Attack": 1, "Luck": 0}
+    return character
 
 
 def describe_current_location(board, character):
@@ -56,6 +54,7 @@ def game():
     columns = 10
     board = make_board(rows, columns)
     character = make_character(input("Player Name?"))
+    describe_current_location(board, character)
     achieved_goal = False
     while not achieved_goal:
         # prompt the current location
