@@ -26,7 +26,14 @@ def describe_current_location(board, character):
 
 
 def get_user_choice():
-    pass
+    directions = ["North", "East", "West", "South"]
+    for direction_tuple in enumerate(directions, 1):
+        print(f"{direction_tuple[0]}: {direction_tuple[1]}")
+    user_choice = input("Type 1 for moving North, 2 for moving East, 3 for moving West, 4 for moving South")
+    while user_choice not in [1, 2, 3, 4]:
+        user_choice = input("Type 1 for moving North, 2 for moving East, 3 for moving West, 4 for moving South")
+    direction = {k: v for (k, v) in enumerate(directions, 1)}
+    return direction[user_choice]
 
 
 def validate_move(board, character, direction):
