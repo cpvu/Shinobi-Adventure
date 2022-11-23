@@ -8,11 +8,11 @@ A01293003
 from makeboard import make_board
 
 def make_character(character_name: str):
-    character = {"Name": character_name, "X": 0, "Y": 0, "Current HP": 10, "Max HP": 10, "Attack": 1, "Luck": 0}
+    character = {"Name": character_name, "X": 0, "Y": 0, "Level": 1, "XP": 0, "Current HP": 10, "Max HP": 100, "Attack": 10, "Luck": 0}
     return character
 
 
-def describe_current_location(board, character):
+def describe_current_location(board, character)
     # we should return the whole board as a map?
     print(f"X: {character['X']},Y: {character['Y']}")
     print("pretend this is a map")
