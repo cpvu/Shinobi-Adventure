@@ -42,7 +42,16 @@ def validate_move(board, character, direction):
 
 
 def move_character(character, direction):
-
+    if direction == "North":
+        character["Y"] += 1
+    elif direction == "South":
+        character["Y"] -= 1
+    elif direction == "East":
+        character["X"] += 1
+    elif direction == "West":
+        character["X"] -= 1
+    else:
+        print('Something wrong')
 
 
 def check_for_challenge():
