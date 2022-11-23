@@ -7,10 +7,6 @@ A01293003
 """
 from makeboard import make_board
 
-#------------helper functions-------------
-
-
-
 def make_character(character_name: str):
     character = {"Name": character_name, "X": 0, "Y": 0, "Current HP": 10, "Max HP": 10, "Attack": 1, "Luck": 0}
     return character
@@ -34,7 +30,16 @@ def get_user_choice():
 
 
 def validate_move(board, character, direction):
-    pass
+    if direction == "North":
+        character["Y"] += 1
+    elif direction == "South":
+        character["Y"] -= 1
+    elif direction == "East":
+        character["X"] += 1
+    elif direction == "West":
+        character["X"] -= 1
+    else:
+        print('Something wrong')
 
 
 def move_character(character, direction):
