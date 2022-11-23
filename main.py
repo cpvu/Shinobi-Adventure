@@ -5,14 +5,18 @@ A01291758
 Hanxiao Mao
 A01293003
 """
+import random
+
 from makeboard import make_board
 
+
 def make_character(character_name: str):
-    character = {"Name": character_name, "X": 0, "Y": 0, "Level": 1, "XP": 0, "Current HP": 10, "Max HP": 100, "Attack": 10, "Luck": 0}
+    character = {"Name": character_name, "X": 0, "Y": 0, "Level": 1, "XP": 0, "Current HP": 10, "Max HP": 100,
+                 "Attack": 10, "Luck": 0}
     return character
 
 
-def describe_current_location(board, character)
+def describe_current_location(board, character):
     # we should return the whole board as a map?
     print(f"X: {character['X']},Y: {character['Y']}")
     print("pretend this is a map")
@@ -54,12 +58,15 @@ def move_character(character, direction):
         print('Something wrong')
 
 
-def check_for_challenge():
-    # if
-    pass
+def check_for_challenge(board, character):
+    if board(character["X"], character["Y"]) == "Treasure Room":
+        if 1 <= random.randint(1, 100) <= 10:
+            return True
+    elif board(character["X"], character["Y"]) == "Monster Room":
+        return True
 
 
-def execute_challenge_protocol(character):
+def execute_challenge_protocol(character, monster_type):
     pass
 
 

@@ -3,14 +3,13 @@ import random
 
 def generate_room_type():
     random_number = random.randint(0, 100)
-    if 0 <= random_number <= 30:
+    if 0 <= random_number <= 45:
         return "Empty Room"
-    elif 31 <= random_number <= 45:
+    elif 45 <= random_number <= 59:
         return "Treasure Room"
-    elif 46 <= random_number <= 70:
+    elif 60 <= random_number <= 100:
         return "Monster Room"
-    elif 71 <= random_number < 81:
-        return "Health Point"
+
 
 
 def make_board(row, column):
