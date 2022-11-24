@@ -34,15 +34,17 @@ def get_user_choice():
 
 
 def validate_move(board, character, direction):
-    direction_check = {"North": board.get((character["X"], character["Y"] + 1), "Boundary"),
-                       "East": board.get((character["X"] + 1, character["Y"]), "Boundary"),
-                       "West": board.get((character["X"] - 1, character["Y"]), "Boundary"),
-                       "South": board.get((character["X"], character["Y"] - 1), "Boundary")}
-    if direction_check[direction] == "Boundary":
-        print("The direction is not available!")
-        return False
-    else:
+    if direction == "North" and (character["X"], character["Y"] + 1) in board.keys():
         return True
+    elif direction == "South" and (character["X"], character["Y"] - 1) in board.keys():
+        return True
+    elif direction == "West" and (character["X"] - 1, character["Y"]) in board.keys():
+        return True
+    elif direction == "East" and (character["X"] + 1, character["Y"]) in board.keys():
+        return True
+    else:
+        print("Invalid action, you can't go that way!")
+        return False
 
 
 def move_character(character, direction):
