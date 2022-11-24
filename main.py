@@ -58,25 +58,15 @@ def move_character(character, direction):
         print('Something wrong')
 
 
-def check_for_event(board, character):
+def check_for_challenge(board, character):
     if board(character["X"], character["Y"]) == "Treasure Room":
-        random_number = random.randint(1, 100)
-        if 0 < random_number <= 10:
-            return "fight"
-        elif 10 < random_number <= 30:
-            # good thing?
-            return "good"
-        elif 80 < random_number <= 100:
-            return "bad"
-        else:
-            print("You found a chest, but it has been robbed!")
+        if 1 <= random.randint(1, 100) <= 10:
+            return True
     elif board(character["X"], character["Y"]) == "Monster Room":
-        return "fight"
-    elif board(character["X"], character["Y"]) == "empty Room":
+        return True
 
 
-
-def execute_event_protocol(event):
+def execute_challenge_protocol(character, monster_type):
     pass
 
 
@@ -107,9 +97,9 @@ def game():
         if valid_move:
             move_character(character, direction)
             describe_current_location(board, character)
-            there_is_a_event = check_for_event(board, character)
-            if there_is_a_event == "fight":
-                execute_event_protocol(there_is_a_event)
+            there_is_a_challenge = check_for_challenge()
+            if there_is_a_challenge:
+                execute_challenge_protocol(character)
                 if character_has_leveled():
                     execute_glow_up_protocol()
             achieved_goal = check_if_goal_attained(board, character)
