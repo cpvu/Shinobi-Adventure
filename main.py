@@ -34,6 +34,7 @@ def get_user_choice():
 
 
 def validate_move(board, character, direction):
+    """
     direction_check = {"North": board.get((character["X"], character["Y"] + 1), "Boundary"),
                        "East": board.get((character["X"] + 1, character["Y"]), "Boundary"),
                        "West": board.get((character["X"] - 1, character["Y"]), "Boundary"),
@@ -43,7 +44,17 @@ def validate_move(board, character, direction):
         return False
     else:
         return True
-
+    """
+    if direction == "North" and (character["X"], character["Y"] + 1) in board.keys():
+        return True
+    elif direction == "South" and (character["X"], character["Y"] - 1) in board.keys():
+        return True
+    elif direction == "West" and (character["X"] - 1, character["Y"]) in board.keys():
+        return True
+    elif direction == "East" and (character["X"] + 1, character["Y"]) in board.keys():
+        return True
+    else:
+        print("Invalid action, you can't go that way!")
 
 def move_character(character, direction):
     if direction == "North":
@@ -57,27 +68,38 @@ def move_character(character, direction):
     else:
         print('Something wrong')
 
+# def generate_monster(character):
+    #if character["level"] == 1:
+        monsters = [{"name": "Bird", "HP": 100, "Attack": 5}]
+        #randomly choose a monster 
+        #return whatever monster
 
+# def battle_monster(character, monster):
+    #Function roll for initiative (who goes first)
+    #Roll for chance to attack/miss
+    #battle monster
+    #Check if monster is still alive
+
+# Hit level 3 and then challenge. Roll a random number and from there is a chance to encounter a challenge.
 def check_for_challenge(board, character):
-    if board(character["X"], character["Y"]) == "Treasure Room":
-        if 1 <= random.randint(1, 100) <= 10:
-            return True
-    elif board(character["X"], character["Y"]) == "Monster Room":
-        return True
-
-
-def execute_challenge_protocol(character, monster_type):
     pass
+
+
+def execute_challenge_protocol(character, board ):
+    pass
+    if board(character["X"], character["Y"]) == "Monster Room":
+        battle_monster(character, generate_monster(character))
 
 
 def character_has_leveled():
     pass
 
-
+#Ascii art to show the level up of the character
 def execute_glow_up_protocol():
     pass
 
-
+#Check to see if goal is attained, killed a boss/reached level 3. Key value pair in the character called success: false
+#switched to true if boss is killed
 def check_if_goal_attained(board, character):
     pass
 
@@ -97,7 +119,7 @@ def game():
         if valid_move:
             move_character(character, direction)
             describe_current_location(board, character)
-            there_is_a_challenge = check_for_challenge()
+            there_is_a_challenge = check_for_challenge(board, character)
             if there_is_a_challenge:
                 execute_challenge_protocol(character)
                 if character_has_leveled():
