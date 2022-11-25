@@ -5,7 +5,7 @@ import time
 def generate_monster(character):
     if character["Level"] == 1:
         level_one_monsters = [{"name": "Bird", "HP": 100, "MaxHP": 100, "Attack": 5, "XP": 40},
-                   {"name": "Raven", "HP": 60, "MaxHP": 100, "Attack": 10, "XP": 35},
+                    {"name": "Raven", "HP": 60, "MaxHP": 100, "Attack": 10, "XP": 35},
                    {"name": "Chicken", "HP": 80, "MaxHP": 100, "Attack": 7, "XP": 60}]
 
         battle_monster = level_one_monsters[random.randint(0, 2)]
@@ -44,6 +44,10 @@ def battle(character, monster):
         character["XP"] += battle_experience
         print("The foe has been vanquished!")
         print(f"You have gained {battle_experience} experience!")
+
+    if character["HP"] < 0:
+        print("You have died...")
+        print("Game over, please try again")
 
 
 """
