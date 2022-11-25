@@ -5,10 +5,9 @@ A01291758
 Hanxiao Mao
 A01293003
 """
-import random
-
 from makeboard import make_board
 from battle import generate_monster, battle
+from treasureroom import execute_treasure_event
 
 
 def make_character(character_name: str):
@@ -74,6 +73,8 @@ def execute_event_protocol(character, event):
     if event == "Battle":
         monster = generate_monster(character)
         battle(character, monster)
+    elif event == "Treasure":
+        execute_treasure_event(character)
 
 def character_has_leveled():
     pass
