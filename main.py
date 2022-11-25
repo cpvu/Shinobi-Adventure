@@ -8,11 +8,12 @@ A01293003
 import random
 
 from makeboard import make_board
+from battle import generate_monster, battle
 
 
 def make_character(character_name: str):
-    character = {"Name": character_name, "X": 0, "Y": 0, "Level": 1, "XP": 0, "Current HP": 10, "Max HP": 100,
-                 "Attack": 10, "Luck": 0}
+    character = {"Name": character_name, "X": 0, "Y": 0, "Level": 1,"XP": 0, "XPToLevelUp": 100, "XP": 0, "HP": 100,
+                 "Max HP": 100,"Attack": 10, "Luck": 0}
     return character
 
 
@@ -60,17 +61,19 @@ def move_character(character, direction):
         print('Something wrong')
 
 
-def check_for_challenge(board, character):
-    if board(character["X"], character["Y"]) == "Treasure Room":
-        if 1 <= random.randint(1, 100) <= 10:
-            return True
-    elif board(character["X"], character["Y"]) == "Monster Room":
-        return True
+def check_for_event(board, character):
+    if board[(character["X"], character["Y"])] == "Treasure Room":
+        return "Treasure"
+    elif board[(character["X"], character["Y"])] == "Monster Room":
+        return "Battle"
+    else:
+        return "Empty Room"
 
 
-def execute_challenge_protocol(character, monster_type):
-    pass
-
+def execute_event_protocol(character, event):
+    if event == "Battle":
+        monster = generate_monster(character)
+        battle(character, monster)
 
 def character_has_leveled():
     pass
@@ -99,11 +102,9 @@ def game():
         if valid_move:
             move_character(character, direction)
             describe_current_location(board, character)
-            there_is_a_challenge = check_for_challenge()
-            if there_is_a_challenge:
-                execute_challenge_protocol(character)
-                if character_has_leveled():
-                    execute_glow_up_protocol()
+            execute_event_protocol(character, check_for_event(board, character))
+            if character_has_leveled():
+                execute_glow_up_protocol()
             achieved_goal = check_if_goal_attained(board, character)
         else:
             # do something here if the move is not valid
