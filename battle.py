@@ -1,13 +1,6 @@
 import random
 import time
 
-def assignStatus(stats, character):
-   pass
-
-def levelUp(character):
-    character["Level"] += 1
-    character["HP"] += 50
-    character["Attack"] += 25
 
 def generate_monster(character):
     if character["Level"] == 1:
@@ -40,16 +33,17 @@ def battle(character, monster):
         print(f"You inflicted {character_attack} damage with a great slash!")
         character["HP"] -= monster_attack
         print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
-        print(f'{monster["HP"]}/{monster["MaxHP"]}HP')
+        print(f'{monster["name"]}:{monster["HP"]}/{monster["MaxHP"]}HP')
+        print(f'{character["Name"]}: {character["HP"]}/{character["Max HP"]}')
         monster["HP"] -= character_attack
 
-        time.sleep(1)
+        time.sleep(2)
 
     if monster["HP"] <= 0:
         battle_experience = monster["XP"] + random.randint(1, 10)
         character["XP"] += battle_experience
         print("The foe has been vanquished!")
-        print(f"You have gained {battle_experience}!")
+        print(f"You have gained {battle_experience} experience!")
 
 
 """
