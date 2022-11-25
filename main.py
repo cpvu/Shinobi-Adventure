@@ -75,6 +75,9 @@ def execute_event_protocol(character, event):
         battle(character, monster)
     elif event == "Treasure":
         execute_treasure_event(character)
+    else:
+        print("An empty room")
+        return
 
 def character_has_leveled():
     pass
@@ -104,6 +107,8 @@ def game():
             move_character(character, direction)
             describe_current_location(board, character)
             execute_event_protocol(character, check_for_event(board, character))
+            if character["HP"] < 0:
+                break
             if character_has_leveled():
                 execute_glow_up_protocol()
             achieved_goal = check_if_goal_attained(board, character)
