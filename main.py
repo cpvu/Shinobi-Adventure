@@ -79,8 +79,10 @@ def execute_event_protocol(character, event):
         print("An empty room")
         return
 
-def character_has_leveled():
-    pass
+
+def character_has_leveled(character):
+    if character["XP"] >= character["XPtoLevelUp"]:
+        return True
 
 
 def execute_glow_up_protocol():
