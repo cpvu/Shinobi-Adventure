@@ -10,7 +10,7 @@ from battle import generate_monster, battle
 from treasureroom import execute_treasure_event
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
-from levelup import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
+from level_up import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
 
 
 def check_for_event(board, character):
