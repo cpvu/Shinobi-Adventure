@@ -1,17 +1,16 @@
 import random
 
 
-def assign_stats(stats):
-    key_item = list(stats.keys())
-    if key_item[0] == "Max HP":
+def assign_stats(stat_name, stat_value):
+    if stat_name == "Max HP":
         stat_gain = random.randint(50, 75)
         #print(f"\t \t \t {key_item[0]}: {stats[key_item[0]]} + {stat_gain } = {stats[key_item[0]] + stat_gain}")
-        stats[key_item[0]] += stat_gain
+        new_stat = stat_gain + stat_value
     else:
-        stat_gain = random.randint(0, 6)
+        stat_gain = random.randint(2, 10)
         #print(f"\t \t \t {key_item[0]}: {stats[key_item[0]]} + {stat_gain} = {stats[key_item[0]] + stat_gain}")
-        stats[key_item[0]] += stat_gain
-    return stats
+        new_stat = stat_gain + stat_value
+    return new_stat
 
 
 def assign_experience(character):
@@ -25,7 +24,7 @@ def assign_experience(character):
 
 
 def character_has_leveled(character):
-    if character["XP"] >= character["XPToLevelUp"]:
+    if character[0]["XP"] >= character[0]["XPToLevelUp"]:
         return True
 
 def execute_character_glow_up():
@@ -48,7 +47,7 @@ def main():
             execute_character_glow_up()
             assign_experience(character)
             print(f"\t \t \t Congratulations, you are now Level {character['Level']}!")
-            combat_stats = list(map(assign_stats, combat_stats))
+            character[1]["stats"] = list(map(assign_stats, character[1]["stats"]))
 
 
         count += 1
