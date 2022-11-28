@@ -21,6 +21,8 @@ def assign_experience(character):
     character["XP"] = remaining_experience
     character["XPToLevelUp"] += 150
 
+    print(f"\t \t \t Congratulations, you are now Level {character['Level']}!")
+
 
 def character_has_leveled(character):
     if character["XP"] >= character["XPToLevelUp"]:
@@ -37,9 +39,8 @@ def execute_character_glow_up():
 
 def main():
     count = 0
-    combat_stats = [{"HP": 100}, {"Max HP": 100}, {"Attack": 10}, {"Defense": 8}, {"Magic": 11}, {"Luck": 2}]
     character = {"Name": "Calvin", "X": 0, "Y": 0, "Level": 1, "XP": 101, "XPToLevelUp": 100,
-                 "stats": combat_stats}
+                 "stats": [{"HP": 100}, {"Max HP": 100}, {"Attack": 10}, {"Defense": 8}, {"Magic": 11}, {"Luck": 2}]}
     while count < 10:
         character["XP"] += 100
 
