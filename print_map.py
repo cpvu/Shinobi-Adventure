@@ -4,9 +4,9 @@ def printing_map(character):
                    " + + + + + + + + + +", " C + + + + + + + + B"]
     current_map = default_map[:]
     for line in current_map:
-        target_row = current_map[character["X"]].split(' ')
-        target_row[character["Y"]] = 'U'
-        current_map[character["X"]] = " ".join(target_row)
+        target_row = current_map[character[0]["X"]].split(' ')
+        target_row[character[0]["Y"]] = 'U'
+        current_map[character[0]["X"]] = " ".join(target_row)
         print(line)
 
 
