@@ -10,10 +10,10 @@ def printing_map(character):
         print(line)
 
 
-def describe_current_location(board, character):
+def describe_current_location(character):
     # we should return the whole board as a map?
     print(f"X: {character[0]['X']},Y: {character[0]['Y']}")
-    print("pretend this is a map")
+    printing_map(character)
 
 
 def get_user_choice():

@@ -11,7 +11,6 @@ def generate_room_type():
         return "Monster Room"
 
 
-
 def make_board(row, column):
     board = {(k, v): generate_room_type() for k in range(row) for v in range(column)}
     board[(0, 0)] = "Empty Room"
