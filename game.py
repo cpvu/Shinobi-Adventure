@@ -42,7 +42,7 @@ def game():
     columns = 10
     board = make_board(rows, columns)
     character = make_character(input("Player Name?"))
-    describe_current_location(board, character)
+    describe_current_location(character)
     achieved_goal = False
     while not achieved_goal:
         # prompt the current location
@@ -52,7 +52,7 @@ def game():
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
-            describe_current_location(board, character)
+            describe_current_location(character)
             execute_event_protocol(character, check_for_event(board, character))
             if character["HP"] < 0:
                 break

@@ -3,16 +3,16 @@ def printing_map(character):
                    "+ + + + + + + + + +", "+ + + + + M + + + +", "+ + + + + + + + + +", "+ + H + + + + H + +",
                    "+ + + + + + + + + +", "+ + + + + + + + + C"]
     current_map = default_map[:]
-    target_row = current_map[9 - character[0]["Y"]].split(' ')
-    target_row[character[0]["X"]] = 'U'
-    current_map[9 - character[0]["Y"]] = " ".join(target_row)
+    target_row = current_map[9 - character["Y"]].split(' ')
+    target_row[character["X"]] = 'U'
+    current_map[9 - character["Y"]] = " ".join(target_row)
     for line in current_map:
         print(line)
 
 
 def describe_current_location(character):
     # we should return the whole board as a map?
-    print(f"X: {character[0]['X']},Y: {character[0]['Y']}")
+    print(f"X: {character['X']},Y: {character['Y']}")
     printing_map(character)
 
 
@@ -28,13 +28,13 @@ def get_user_choice():
 
 
 def validate_move(board, character, direction):
-    if direction == "North" and (character[0]["X"], character[0]["Y"] + 1) in board.keys():
+    if direction == "North" and (character["X"], character["Y"] + 1) in board.keys():
         return True
-    elif direction == "South" and (character[0]["X"], character[0]["Y"] - 1) in board.keys():
+    elif direction == "South" and (character["X"], character["Y"] - 1) in board.keys():
         return True
-    elif direction == "West" and (character[0]["X"] - 1, character[0]["Y"]) in board.keys():
+    elif direction == "West" and (character["X"] - 1, character["Y"]) in board.keys():
         return True
-    elif direction == "East" and (character[0]["X"] + 1, character[0]["Y"]) in board.keys():
+    elif direction == "East" and (character["X"] + 1, character["Y"]) in board.keys():
         return True
     else:
         print("Invalid action, you can't go that way!")
@@ -42,12 +42,12 @@ def validate_move(board, character, direction):
 
 def move_character(character, direction):
     if direction == "North":
-        character[0]["Y"] += 1
+        character["Y"] += 1
     elif direction == "South":
-        character[0]["Y"] -= 1
+        character["Y"] -= 1
     elif direction == "East":
-        character[0]["X"] += 1
+        character["X"] += 1
     elif direction == "West":
-        character[0]["X"] -= 1
+        character["X"] -= 1
     else:
         print('Something wrong')
