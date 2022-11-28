@@ -16,8 +16,8 @@ def treasure_chest(character):
 
 def treasure_chest_battle(character):
     print("A enemy appears before you... defeat it to get the treasure")
-    treasure_room_monster = generate_monster(character)
-    battle(character, treasure_room_monster)
+    treasure_room_monster = generate_monster(character[0])
+    battle(character[0], character[1]["stats"], treasure_room_monster)
 
 
 def neutral_event(character):

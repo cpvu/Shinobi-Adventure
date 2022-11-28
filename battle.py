@@ -11,43 +11,49 @@ def generate_monster(character):
         battle_monster = level_one_monsters[random.randint(0, 2)]
 
     if character["Level"] == 2:
-        level_two_monsters = [{"name": "Bird", "HP": 150, "Attack": 5, "XP": 40},
-                              {"name": "Raven", "HP": 100, "Attack": 10, "XP": 35},
-                              {"name": "Chicken", "HP": 200, "Attack": 7, "XP": 60}]
+        level_one_monsters = [{"name": "Bird", "HP": 300, "MaxHP": 300, "Attack": 5, "XP": 40},
+                              {"name": "Raven", "HP": 250, "MaxHP": 250, "Attack": 10, "XP": 35},
+                              {"name": "Chicken", "HP": 370, "MaxHP": 370, "Attack": 7, "XP": 60}]
 
         battle_monster = level_one_monsters[random.randint(0, 2)]
 
     if character["Level"] == 3:
-        level_three_monsters = [{"name": "Bird", "HP": 100, "MaxHP": 100, "Attack": 5},
-                              {"name": "Raven", "HP": 60, "Attack": 10},
-                              {"name": "Chicken", "HP": 80, "Attack": 7}]
+        level_one_monsters = [{"name": "Bird", "HP": 340, "MaxHP": 340, "Attack": 5, "XP": 40},
+                              {"name": "Raven", "HP": 400, "MaxHP": 400, "Attack": 10, "XP": 35},
+                              {"name": "Chicken", "HP": 450, "MaxHP": 450, "Attack": 7, "XP": 60}]
         battle_monster = level_one_monsters[random.randint(0, 2)]
+
     return battle_monster
 
 
-def battle(character, monster):
-    while character["HP"] > 0 and monster["HP"] > 0:
-        character_attack = random.randint(0, 10) + character["Attack"]
+def experience(character, monster_xp):
+    character["XP"] += monster_xp
+    print(f"You have gained {monster_xp} experience!")
+
+
+
+def battle(character, combat_stats, monster):
+    while combat_stats["HP"] > 0 and monster["HP"] > 0:
+        character_attack = random.randint(0, 10) + combat_stats["Attack"]
         monster_attack = random.randint(0, 5) + monster["Attack"]
 
         print(f"You inflicted {character_attack} damage with a great slash!")
-        character["HP"] -= monster_attack
+        combat_stats["HP"] -= monster_attack
         print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
         print(f'{monster["name"]}:{monster["HP"]}/{monster["MaxHP"]}HP')
-        print(f'{character["Name"]}: {character["HP"]}/{character["Max HP"]}')
+        print(f'{character["Name"]}: {combat_stats["HP"]}/{combat_stats["Max HP"]}')
         monster["HP"] -= character_attack
 
-        time.sleep(2)
+        time.sleep(1)
 
     if monster["HP"] <= 0:
-        battle_experience = monster["XP"] + random.randint(1, 10)
-        character["XP"] += battle_experience
         print("The foe has been vanquished!")
-        print(f"You have gained {battle_experience} experience!")
+        experience(character, monster["XP"])
 
-    if character["HP"] < 0:
+    if combat_stats["HP"] < 0:
         print("You have died...")
         print("Game over, please try again")
+
 
 
 """

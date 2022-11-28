@@ -14,9 +14,9 @@ from level_up import character_has_leveled, execute_character_glow_up, assign_ex
 
 
 def check_for_event(board, character):
-    if board[(character["X"], character["Y"])] == "Treasure Room":
+    if board[(character[0]["X"], character[0]["Y"])] == "Treasure Room":
         return "Treasure"
-    elif board[(character["X"], character["Y"])] == "Monster Room":
+    elif board[(character[0]["X"], character[0]["Y"])] == "Monster Room":
         return "Battle"
     else:
         return "Empty Room"
@@ -24,8 +24,8 @@ def check_for_event(board, character):
 
 def execute_event_protocol(character, event):
     if event == "Battle":
-        monster = generate_monster(character)
-        battle(character, monster)
+        monster = generate_monster(character[0])
+        battle(character[0], character[1]["stats"], monster)
     elif event == "Treasure":
         execute_treasure_event(character)
     else:
@@ -47,15 +47,18 @@ def game():
     while not achieved_goal:
         # prompt the current location
         # describe_current_location(board, character)
+        print(character)
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
             describe_current_location(board, character)
             execute_event_protocol(character, check_for_event(board, character))
-            if character["HP"] < 0:
+            if character[1]["stats"]["HP"] < 0:
                 break
             if character_has_leveled(character):
+                assign_experience(character[0])
+                character[1]["stats"] = dict(zip(character[1]["stats"].keys(), list(map(assign_stats, character[1]["stats"].keys(), character[1]["stats"].values()))))
                 execute_character_glow_up()
             achieved_goal = check_if_goal_attained(board, character)
         else:
