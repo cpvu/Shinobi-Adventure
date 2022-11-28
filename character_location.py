@@ -1,6 +1,6 @@
 def describe_current_location(board, character):
     # we should return the whole board as a map?
-    print(f"X: {character['X']},Y: {character['Y']}")
+    print(f"X: {character[0]['X']},Y: {character[0]['Y']}")
     print("pretend this is a map")
 
 
@@ -16,13 +16,13 @@ def get_user_choice():
 
 
 def validate_move(board, character, direction):
-    if direction == "North" and (character["X"], character["Y"] + 1) in board.keys():
+    if direction == "North" and (character[0]["X"], character[0]["Y"] + 1) in board.keys():
         return True
-    elif direction == "South" and (character["X"], character["Y"] - 1) in board.keys():
+    elif direction == "South" and (character[0]["X"], character[0]["Y"] - 1) in board.keys():
         return True
-    elif direction == "West" and (character["X"] - 1, character["Y"]) in board.keys():
+    elif direction == "West" and (character[0]["X"] - 1, character[0]["Y"]) in board.keys():
         return True
-    elif direction == "East" and (character["X"] + 1, character["Y"]) in board.keys():
+    elif direction == "East" and (character[0]["X"] + 1, character[0]["Y"]) in board.keys():
         return True
     else:
         print("Invalid action, you can't go that way!")
@@ -30,12 +30,12 @@ def validate_move(board, character, direction):
 
 def move_character(character, direction):
     if direction == "North":
-        character["Y"] += 1
+        character[0]["Y"] += 1
     elif direction == "South":
-        character["Y"] -= 1
+        character[0]["Y"] -= 1
     elif direction == "East":
-        character["X"] += 1
+        character[0]["X"] += 1
     elif direction == "West":
-        character["X"] -= 1
+        character[0]["X"] -= 1
     else:
         print('Something wrong')
