@@ -1,30 +1,18 @@
 import random
+import json
 import time
 
 
 def generate_monster(character):
-    battle_monster = {}
-    if character["Level"] == 1:
-        level_one_monsters = [{"name": "Bird", "HP": 100, "MaxHP": 100, "Attack": 5, "XP": 40},
-                              {"name": "Raven", "HP": 60, "MaxHP": 100, "Attack": 10, "XP": 35},
-                              {"name": "Chicken", "HP": 80, "MaxHP": 100, "Attack": 7, "XP": 60}]
+    with open("monsters/monsters.json") as fileobject:
+        all_monsters = json.load(fileobject)
 
-        battle_monster = level_one_monsters[random.randint(0, len(level_one_monsters) - 1)]
-
-    elif character["Level"] == 2:
-        level_two_monsters = [{"name": "Bird", "HP": 300, "MaxHP": 300, "Attack": 5, "XP": 40},
-                              {"name": "Raven", "HP": 250, "MaxHP": 250, "Attack": 10, "XP": 35},
-                              {"name": "Chicken", "HP": 370, "MaxHP": 370, "Attack": 7, "XP": 60}]
-
-        battle_monster = level_two_monsters[random.randint(0, len(level_two_monsters) - 1)]
-
-    elif character["Level"] == 3:
-        level_three_monsters = [{"name": "Bird", "HP": 340, "MaxHP": 340, "Attack": 5, "XP": 40},
-                                {"name": "Raven", "HP": 400, "MaxHP": 400, "Attack": 10, "XP": 35},
-                                {"name": "Chicken", "HP": 450, "MaxHP": 450, "Attack": 7, "XP": 60}]
-        battle_monster = level_three_monsters[random.randint(0, 2)]
-
-    return battle_monster
+        if character["Level"] == 1:
+            return all_monsters[random.randint(0, 2)]
+        elif character["Level"] == 2:
+            return all_monsters[random.randint(0, 5)]
+        elif character["Level"] == 3:
+            return all_monsters[random.randint(0, 8)]
 
 
 def experience(character, monster_xp):
