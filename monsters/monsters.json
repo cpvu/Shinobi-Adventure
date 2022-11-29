@@ -1,0 +1,9 @@
+[{"name": "Bird", "HP": 100, "MaxHP": 100, "Attack": 5, "XP": 40},
+  {"name": "Raven", "HP": 60, "MaxHP": 100, "Attack": 10, "XP": 35},
+  {"name": "Chicken", "HP": 80, "MaxHP": 100, "Attack": 7, "XP": 60},
+  {"name": "Bird", "HP": 300, "MaxHP": 300, "Attack": 5, "XP": 40},
+  {"name": "Raven", "HP": 250, "MaxHP": 250, "Attack": 10, "XP": 35},
+  {"name": "Chicken", "HP": 370, "MaxHP": 370, "Attack": 7, "XP": 60},
+  {"name": "Bird", "HP": 340, "MaxHP": 340, "Attack": 5, "XP": 40},
+  {"name": "Raven", "HP": 400, "MaxHP": 400, "Attack": 10, "XP": 35},
+  {"name": "Chicken", "HP": 450, "MaxHP": 450, "Attack": 7, "XP": 60}]
