@@ -58,6 +58,7 @@ def game():
                 break
             if character_has_leveled(character):
                 assign_experience(character)
+                assign_stats(character)
                 execute_character_glow_up()
             achieved_goal = check_if_goal_attained(board, character)
         else:
