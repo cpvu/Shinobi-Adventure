@@ -14,19 +14,22 @@ def treasure_chest(character):
     print("Within are spoils of the war")
 
 
+
 def treasure_chest_battle(character):
     print("A enemy appears before you... defeat it to get the treasure")
-    treasure_room_monster = generate_monster(character[0])
-    battle(character[0], character[1]["stats"], treasure_room_monster)
+    treasure_room_monster = generate_monster(character)
+    battle(character, treasure_room_monster)
 
 
 def neutral_event(character):
     print("You open the chest.. but theres nothing inside.")
 
+
 def treasure_chest_poisin_gas(character):
     print("You enter the room...")
     print("You open the chest.")
     gas_damage = random.randint(0, 10)
+    character["HP"] -= gas_damage
     print(f"The chest releases a poisonous gas and inflicts {gas_damage} to you.")
 
 
