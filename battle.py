@@ -20,39 +20,88 @@ def experience(character, monster_xp):
     print(f"You have gained {monster_xp} experience!")
 
 
-def battle(character,  monster):
-    while character["HP"] > 0 and monster["HP"] > 0:
-        character_attack = random.randint(0, 10) + character["Attack"]
-        monster_attack = random.randint(0, 5) + monster["Attack"]
+def display_battle_menu():
+    combat_options = ("Attack", "Jutsu", "Heal", "Flee")
 
-        print(f"You inflicted {character_attack} damage with a great slash!")
-        character["HP"] -= monster_attack
-        print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
-        print(f'{monster["name"]}:{monster["HP"]}/{monster["MaxHP"]}HP')
-        print(f'{character["Name"]}: {character["HP"]}/{character["Max HP"]}')
-        monster["HP"] -= character_attack
+    for battle_options in enumerate(combat_options, 1):
+        print(f"{battle_options[0]} - {battle_options[1]}")
 
-        time.sleep(1)
+
+def display_jutsu(character):
+
+    jutsu_selection = [key for key in character["Jutsu"].keys()]
+
+    for jutsu in enumerate(jutsu_selection, 1):
+        print(f"{jutsu[0]} - {jutsu[1]}")
+
+    jutsu_choice = int(input("Select your jutsu")) - 1
+
+    return jutsu_selection[jutsu_choice]
+
+
+def display_normal_attack_sequence(character, monster):
+    monster_attack = random.randint(0, 5) + monster["Attack"]
+    character_attack = random.randint(0, 10) + character["Attack"]
+
+    print(f"You inflicted {character_attack} damage with a slash")
+    print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
+
+    monster["HP"] -= character_attack
+    character["HP"] -= monster_attack
+
+
+def display_battle_hp(character, monster):
+    print(f'{monster["name"]}:{monster["HP"]}/{monster["MaxHP"]}HP')
+    print(f'{character["Name"]}: {character["HP"]}/{character["Max HP"]}')
+
+
+def monster_damage_sequence(character, monster):
+    monster_attack = random.randint(0, 5) + monster["Attack"]
+    print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
+    character["HP"] -= monster_attack
+
+
+def character_damage_sequence(character, monster, character_attack = "slice"):
+    character_damage = random.randint(0, 10) + character["Attack"]
+
+    if character_attack in character["Jutsu"].keys():
+        character_damage += character["Jutsu"][character_attack][0]
+        print(character["Jutsu"][character_attack][1])
+
+    print(f"You inflicted {character_damage} damage with {character_attack}")
+    monster["HP"] -= character_damage
+
+
+def heal_character(character):
+    heal_amount = character["Magic"] * 2
+    character["HP"] += heal_amount
+    if character["HP"] > character["Max HP"]:
+        character["HP"] = character["Max HP"]
+    print(f"You casted Chakra healing to heal {heal_amount}")
+
+
+def battle(character, monster):
+    while monster["HP"] > 0 and character["HP"] > 0:
+        display_battle_menu()
+        battle_action = int(input("What will you do?"))
+
+        if battle_action == 1:
+            character_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster)
+            display_battle_hp(character,monster)
+        elif battle_action == 2:
+            jutsu_name = display_jutsu(character)
+            character_damage_sequence(character, monster, jutsu_name)
+            monster_damage_sequence(character, monster)
+            display_battle_hp(character, monster)
+        elif battle_action == 3:
+            heal_character(character)
+            monster_damage_sequence(character, monster)
+            display_battle_hp(character, monster)
+        elif battle_action == 4:
+            print("You have escaped battle!")
+            break
 
     if monster["HP"] <= 0:
         print("The foe has been vanquished!")
         experience(character, monster["XP"])
-
-    if character["HP"] < 0:
-        print("You have died...")
-        print("Game over, please try again")
-
-
-"""
-def execute_challenge_protocol(character, event):
-    if event == "Monster Room":
-        monster = generate_monster()
-        battle(character, monster)
-    elif event == "Treasure":
-        type_of_event = treasureEvent()
-        if type_of_event == "good"
-            treasure_EventGood(character)
-        elif type_of_event == "bad":
-            treasureEventBad()
-            
-"""
