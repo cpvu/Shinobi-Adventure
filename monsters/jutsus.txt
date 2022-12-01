@@ -1,0 +1,5 @@
+Chidori,Lightning surges through your right arm. You dash and strike the enemy.
+Suition,An aura of water surges from your hand, the enemy is blasted away.
+Raiton,A rumbling occurs, lightning strikes from the sky at your enemy!
+Rasengan,Spherical chakra channels into your left arm. You enemy is hit and spirals away.
+Fuuton,A blast of wind emerges and blows the enemy away.
