@@ -12,6 +12,7 @@ from treasureroom import execute_treasure_event
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
 from level_up import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
+from health_room import execute_health_room
 
 def game_introduction():
     print(" ____ _  _ _ _  _ ____ ___  _ \n"
@@ -51,6 +52,8 @@ def check_for_event(board, character):
         return "Battle"
     elif board[(character["X"], character["Y"])] == "Health room":
         return "Health room"
+    elif board[(character["X"], character["Y"])] == "Elite room":
+        return "Elite room"
     else:
         return "Empty Room"
 
@@ -62,8 +65,8 @@ def execute_event_protocol(character, event):
         execute_battle_protocol(character, monster)
     elif event == "Treasure":
         execute_treasure_event(character)
-    elif event == "Health Room":
-        execute_treasure_event(character)
+    elif event == "Health room":
+        execute_health_room(character)
     else:
         print("You've entered an empty room. There appears to be nothing in here..")
         return
@@ -77,7 +80,7 @@ def game():
     rows = 10
     columns = 10
     board = make_board(rows, columns)
-    game_introduction()
+    #game_introduction()
     character = make_character(input("What is your name fellow shinobi?\n"))
     describe_current_location(character)
     achieved_goal = False
