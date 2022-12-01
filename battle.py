@@ -17,6 +17,20 @@ def generate_monster(character):
             return all_monsters[random.randint(0, 8)]
 
 
+def generate_boss(character):
+    if character["Level"] != 3:
+        print("You have to reach Level 3 to fight the boss!")
+    else:
+        boss = {
+            "name": "Madara Uchiha",
+            "ability": [{"title": "Attack", "attack": 12}, {"title": "Shuriken", "attack": 22},
+                        {"title": "Paper Bomb", "attack": 20}, {"title": "Recovery", "attack": 0}],
+            "HP": 350,
+            "MaxHP": 350
+        }
+        return boss
+
+
 def experience(character, monster_xp):
     character["XP"] += monster_xp
     time.sleep(0.5)
@@ -67,7 +81,16 @@ def monster_damage_sequence(character, monster):
     character["HP"] -= monster_attack
 
 
-def character_damage_sequence(character, monster, character_attack = "slice"):
+def boss_damage_sequence(character, boss):
+    boss_attacks_sequence = itertools.cycle(boss["ability"])
+    boss_attack = next(boss_attacks_sequence)
+    current_attack = random.randint(0, 5) + boss_attack["attack"]
+    print(f'{boss["name"]} use {boss_attack["title"]} for {current_attack} damage!')
+    time.sleep(0.5)
+    character["HP"] -= current_attack
+
+
+def character_damage_sequence(character, monster, character_attack="slice"):
     character_damage = random.randint(0, 10) + character["Attack"]
 
     if character_attack in character["Jutsu"].keys():
@@ -107,20 +130,26 @@ def execute_battle_protocol(character, monster):
 
         if battle_action == 1:
             character_damage_sequence(character, monster)
-            monster_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
+                else boss_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 2:
             jutsu_name = display_jutsu(character)
             character_damage_sequence(character, monster, jutsu_name)
-            monster_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
+                else boss_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 3:
             heal_character(character)
-            monster_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
+                else boss_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 4:
-            print("You have escaped battle!")
-            break
+            if monster['name'] != "Madara Uchiha":
+                print("You have escaped battle!")
+                break
+            else:
+                print("You can't escape from a boss fight!")
 
     if monster["HP"] <= 0:
         print("The foe has been vanquished!")

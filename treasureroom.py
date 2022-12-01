@@ -7,11 +7,11 @@ A01293003
 """
 import random
 import time
-from battle import generate_monster, battle
+from battle import generate_monster
 import itertools
 
 
-def generate_jutsu(character = None):
+def generate_jutsu(character=None):
     with open("monsters/jutsus.txt") as fileobject:
         all_jutsus = []
         for line in fileobject.readlines():
