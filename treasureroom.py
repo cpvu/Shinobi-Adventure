@@ -7,7 +7,7 @@ A01293003
 """
 import random
 import time
-from battle import generate_monster, battle
+from battle import generate_monster, execute_battle_protocol
 import itertools
 
 
@@ -16,7 +16,7 @@ def generate_jutsu(character = None):
         all_jutsus = []
         for line in fileobject.readlines():
             jutsu_pair = line.strip().split(',')
-            all_jutsus.append((jutsu_pair[0], jutsu_pair[1]))
+            all_jutsus.append((jutsu_pair[0], jutsu_pair[1], jutsu_pair[2]))
         return all_jutsus[random.randint(0, len(all_jutsus) - 1)]
 
 
@@ -41,12 +41,13 @@ def open_sacred_scroll(character: dict):
 def treasure_chest_battle(character: dict):
     print("A enemy appears before you... defeat it to get the treasure")
     treasure_room_monster = generate_monster(character)
-    battle(character, treasure_room_monster)
+    execute_battle_protocol(character, treasure_room_monster)
 
 
 def neutral_event(character):
     print("You open the chest.. but theres nothing inside. Better luck next time!")
     time.sleep(1)
+
 
 def treasure_chest_poisin_gas(character):
     print("You enter the room...")
@@ -60,9 +61,11 @@ def treasure_chest_poisin_gas(character):
 def jackpot_event(character):
     print("You enter the room...")
     time.sleep(1)
-    print("You open the chest.")
-    character["Attack"] += 50
-    print("The most powerful jutsu of all..")
+    print("A beam of light strikes through your eyes. A voice echoes.. the mangekyou sharingan is now yours.")
+    print("You feel an unknown power surge within you. See your power in your next battle..")
+    character["Attack"] += 25
+    character["Magic"] += 25
+
 
 
 def execute_treasure_event(character):
