@@ -34,7 +34,7 @@ def display_jutsu(character: dict):
     jutsu_selection = [key for key in character["Jutsu"].keys()]
 
     for jutsu in enumerate(jutsu_selection, 1):
-        print(f"{jutsu[0]} - {jutsu[1][0]}")
+        print(f"{jutsu[0]} - {jutsu[1][0]} - {jutsu[1][2]}")
 
     jutsu_choice = int(input("Select your jutsu")) - 1
 
@@ -89,8 +89,8 @@ def character_damage_sequence(character, monster, character_attack = "slice"):
 
 
 def heal_character(character):
-    heal_amount = character["Magic"] * 2
-    chakra_used = heal_amount * 1.2 - character["Magic"]
+    heal_amount = int(character["Magic"] * 2)
+    chakra_used = int(heal_amount * 1.2 - character["Magic"])
 
     character["HP"] += heal_amount
     chakra_used["Chakra"] -= chakra_used
