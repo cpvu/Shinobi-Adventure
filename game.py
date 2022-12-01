@@ -12,6 +12,7 @@ from treasureroom import execute_treasure_event
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
 from level_up import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
+from health_room import execute_health_room
 
 
 def game_introduction():
@@ -52,6 +53,8 @@ def check_for_event(board, character):
         return "Health room"
     elif board[(character["X"], character["Y"])] == "Boss room":
         return "Boss"
+    elif board[(character["X"], character["Y"])] == "Elite room":
+        return "Elite room"
     else:
         return "Empty Room"
 
