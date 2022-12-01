@@ -1,6 +1,11 @@
 import random
 import json
 import time
+import itertools
+
+def generate_jutsu():
+    jutsu_names = ["Chidori", "Raikira", "Kirin"]
+    random_number = random.randint(20, 100)
 
 
 def generate_monster(character):
@@ -27,12 +32,12 @@ def display_battle_menu():
         print(f"{battle_options[0]} - {battle_options[1]}")
 
 
-def display_jutsu(character):
+def display_jutsu(character: dict):
 
     jutsu_selection = [key for key in character["Jutsu"].keys()]
 
     for jutsu in enumerate(jutsu_selection, 1):
-        print(f"{jutsu[0]} - {jutsu[1]}")
+        print(f"{jutsu[0]} - {jutsu[1][0]}")
 
     jutsu_choice = int(input("Select your jutsu")) - 1
 
@@ -65,8 +70,9 @@ def character_damage_sequence(character, monster, character_attack = "slice"):
     character_damage = random.randint(0, 10) + character["Attack"]
 
     if character_attack in character["Jutsu"].keys():
-        character_damage += character["Jutsu"][character_attack][0]
-        print(character["Jutsu"][character_attack][1])
+        character_damage += character["Jutsu"][character_attack]
+        print(character_attack[1])
+        character_attack = character_attack[0]
 
     print(f"You inflicted {character_damage} damage with {character_attack}")
     monster["HP"] -= character_damage
@@ -88,7 +94,7 @@ def battle(character, monster):
         if battle_action == 1:
             character_damage_sequence(character, monster)
             monster_damage_sequence(character, monster)
-            display_battle_hp(character,monster)
+            display_battle_hp(character, monster)
         elif battle_action == 2:
             jutsu_name = display_jutsu(character)
             character_damage_sequence(character, monster, jutsu_name)
