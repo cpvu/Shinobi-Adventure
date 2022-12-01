@@ -5,20 +5,19 @@ def character_has_leveled(character):
     if character["XP"] >= character["XPToLevelUp"]:
         return True
 
-def get_character_stats(stat):
-    combat_stats = ["Max HP", "Attack", "Defense", "Magic", "Luck"]
-    if stat in combat_stats:
-        return stat
-
 
 def assign_stats(character):
-    combat_stats = ["Max HP", "Attack", "Defense", "Magic", "Luck"]
+    combat_stats = ["Max HP", "HP", "Attack", "Defense", "Magic"]
 
-    for stat in combat_stats:
-        if stat == "Max HP":
-            character[stat] += random.randint(50, 75)
-        else:
-            character[stat] += random.randint(3, 8)
+    def map_level_up(key, value):
+        if key in combat_stats:
+            value *= 1.3
+            value = int(value)
+        return key, value
+
+    for k, v in map(map_level_up, character.keys(), character.values()):
+        character[k] = v
+
 
 def assign_experience(character):
     remaining_experience = character["XP"] - character["XPToLevelUp"]
