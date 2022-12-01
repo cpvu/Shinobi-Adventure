@@ -3,10 +3,6 @@ import json
 import time
 import itertools
 
-def generate_jutsu():
-    jutsu_names = ["Chidori", "Raikira", "Kirin"]
-    random_number = random.randint(20, 100)
-
 
 def generate_monster(character):
     with open("monsters/monsters.json") as fileobject:
@@ -33,7 +29,6 @@ def display_battle_menu():
 
 
 def display_jutsu(character: dict):
-
     jutsu_selection = [key for key in character["Jutsu"].keys()]
 
     for jutsu in enumerate(jutsu_selection, 1):
@@ -56,8 +51,9 @@ def display_normal_attack_sequence(character, monster):
 
 
 def display_battle_hp(character, monster):
-    print(f'{monster["name"]}:{monster["HP"]}/{monster["MaxHP"]}HP')
-    print(f'{character["Name"]}: {character["HP"]}/{character["Max HP"]}')
+    print(f'{monster["name"]} HP:{monster["HP"]}/{monster["MaxHP"]}HP')
+    print(f'{character["Name"]}: HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
+          f'{character["Max Chakra"]}')
 
 
 def monster_damage_sequence(character, monster):
@@ -71,7 +67,14 @@ def character_damage_sequence(character, monster, character_attack = "slice"):
 
     if character_attack in character["Jutsu"].keys():
         character_damage += character["Jutsu"][character_attack]
-        print(character_attack[1])
+        jutsu_chakra = int(character_damage / 2)
+
+        if character["Chakra"] < jutsu_chakra:
+            print("Not enough chakra to cast this jutsu..")
+            return
+
+        character["Chakra"] -= jutsu_chakra
+        print(f"{character_attack[1]} {jutsu_chakra} chakra points used.")
         character_attack = character_attack[0]
 
     print(f"You inflicted {character_damage} damage with {character_attack}")
