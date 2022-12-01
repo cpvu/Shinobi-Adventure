@@ -1,6 +1,7 @@
 import random
 import json
 import time
+from health_room import check_health_and_chakra_max
 import itertools
 
 
@@ -18,6 +19,7 @@ def generate_monster(character):
 
 def experience(character, monster_xp):
     character["XP"] += monster_xp
+    time.sleep(0.5)
     print(f"You have gained {monster_xp} experience!")
 
 
@@ -44,21 +46,24 @@ def display_normal_attack_sequence(character, monster):
     character_attack = random.randint(0, 10) + character["Attack"]
 
     print(f"You inflicted {character_attack} damage with a slash")
+    time.sleep(0.5)
     print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
+    time.sleep(0.5)
 
     monster["HP"] -= character_attack
     character["HP"] -= monster_attack
 
 
 def display_battle_hp(character, monster):
-    print(f'{monster["name"]} HP:{monster["HP"]}/{monster["MaxHP"]}HP')
-    print(f'{character["Name"]}: HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
+    print(f'{monster["name"]} - HP:{monster["HP"]}/{monster["MaxHP"]}HP')
+    print(f'{character["Name"]} - HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
           f'{character["Max Chakra"]}')
 
 
 def monster_damage_sequence(character, monster):
     monster_attack = random.randint(0, 5) + monster["Attack"]
     print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
+    time.sleep(0.5)
     character["HP"] -= monster_attack
 
 
@@ -66,7 +71,7 @@ def character_damage_sequence(character, monster, character_attack = "slice"):
     character_damage = random.randint(0, 10) + character["Attack"]
 
     if character_attack in character["Jutsu"].keys():
-        character_damage += character["Jutsu"][character_attack]
+        character_damage = character["Jutsu"][character_attack] + character["Magic"]
         jutsu_chakra = int(character_damage / 2)
 
         if character["Chakra"] < jutsu_chakra:
@@ -75,21 +80,27 @@ def character_damage_sequence(character, monster, character_attack = "slice"):
 
         character["Chakra"] -= jutsu_chakra
         print(f"{character_attack[1]} {jutsu_chakra} chakra points used.")
+        time.sleep(0.5)
         character_attack = character_attack[0]
 
     print(f"You inflicted {character_damage} damage with {character_attack}")
+    time.sleep(1)
     monster["HP"] -= character_damage
 
 
 def heal_character(character):
     heal_amount = character["Magic"] * 2
+    chakra_used = heal_amount * 1.2 - character["Magic"]
+
     character["HP"] += heal_amount
-    if character["HP"] > character["Max HP"]:
-        character["HP"] = character["Max HP"]
-    print(f"You casted Chakra healing to heal {heal_amount}")
+    chakra_used["Chakra"] -= chakra_used
+    check_health_and_chakra_max(character)
+
+    print(f"You activate your healing scroll to heal your wounds for {heal_amount}")
+    print(f"You expended {chakra_used} chakra.")
 
 
-def battle(character, monster):
+def execute_battle_protocol(character, monster):
     while monster["HP"] > 0 and character["HP"] > 0:
         display_battle_menu()
         battle_action = int(input("What will you do?"))
