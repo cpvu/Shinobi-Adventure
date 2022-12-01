@@ -91,9 +91,15 @@ def character_damage_sequence(character, monster, character_attack = "slice"):
 def heal_character(character):
     heal_amount = int(character["Magic"] * 2)
     chakra_used = int(heal_amount * 1.2 - character["Magic"])
+    if character["Chakra"] < chakra_used:
+        print("No more chakra available.. A grave mistake to heal.")
+        return
+    if character["Chakra"] < character["Max Chakra"]:
+        print("Health is already full! I can't make a mistake like that again..")
+        return
 
+    character["Chakra"] -= chakra_used
     character["HP"] += heal_amount
-    chakra_used["Chakra"] -= chakra_used
     check_health_and_chakra_max(character)
 
     print(f"You activate your healing scroll to heal your wounds for {heal_amount}")
