@@ -53,19 +53,24 @@ def display_battle_menu():
 
 def display_jutsu(character: dict):
     jutsu_selection = [key for key in character["Jutsu"].keys()]
+    jutsu_numbers = []
 
     for jutsu in enumerate(jutsu_selection, 1):
         print(f"{jutsu[0]} - {jutsu[1][0]} - {jutsu[1][2]}")
+        jutsu_numbers.append(str(jutsu[0]))
 
-    jutsu_choice = int(input("Select your jutsu or enter q to go back"))
+    jutsu_choice = (input("Select your jutsu or enter q to go back"))
     if jutsu_choice == 'q':
         return 'q'
 
-    if jutsu_choice < len(jutsu_selection) + 1:
-        return jutsu_selection[int(jutsu_choice) - 1]
+    if jutsu_choice not in jutsu_numbers:
+        print("Invalid input")
+        return 'q'
 
-    print("Invalid input")
-    return 'q'
+    return jutsu_selection[int(jutsu_choice) - 1]
+
+
+
 
 
 def display_normal_attack_sequence(character, monster):
@@ -140,13 +145,13 @@ def heal_character(character):
 
 
 def execute_battle_protocol(character, monster):
-
     while monster["HP"] > 0 and character["HP"] > 0:
         display_battle_menu()
         battle_action = input("What will you do?")
         while battle_action not in ['1', '2', '3', '4']:
             print("Invalid input!")
             battle_action = input("What will you do?")
+
         if int(battle_action) == 1:
             character_damage_sequence(character, monster)
             monster_damage_sequence(character, monster)
