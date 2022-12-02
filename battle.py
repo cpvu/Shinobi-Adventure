@@ -57,13 +57,15 @@ def display_jutsu(character: dict):
     for jutsu in enumerate(jutsu_selection, 1):
         print(f"{jutsu[0]} - {jutsu[1][0]} - {jutsu[1][2]}")
 
-    jutsu_choice = input("Select your jutsu or enter q to go back")
+    jutsu_choice = int(input("Select your jutsu or enter q to go back"))
     if jutsu_choice == 'q':
         return 'q'
-    while jutsu_choice not in ['1', '2', '3', '4', 'q']:
-        print("Invalid input!")
-        jutsu_choice = input("Select your jutsu")
-    return jutsu_selection[int(jutsu_choice) - 1]
+
+    if jutsu_choice < len(jutsu_selection) + 1:
+        return jutsu_selection[int(jutsu_choice) - 1]
+
+    print("Invalid input")
+    return 'q'
 
 
 def display_normal_attack_sequence(character, monster):
