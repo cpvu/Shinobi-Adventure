@@ -9,7 +9,6 @@ import itertools
 def generate_monster(character):
     with open("monsters/monsters.json") as fileobject:
         all_monsters = json.load(fileobject)
-
         if character["Level"] == 1:
             return all_monsters[random.randint(0, 2)]
         elif character["Level"] == 2:
@@ -22,14 +21,21 @@ def generate_boss(character):
     if character["Level"] != 3:
         print("You have to reach Level 3 to fight the boss!")
     else:
-        boss = {
-            "name": "Madara Uchiha",
-            "ability": [{"title": "Attack", "attack": 12}, {"title": "Shuriken", "attack": 22},
-                        {"title": "Paper Bomb", "attack": 20}, {"title": "Recovery", "attack": 0}],
-            "HP": 350,
-            "MaxHP": 350
-        }
+        boss = {"name": "Madara Uchiha",
+                "ability": [{"title": "Attack", "attack": 12}, {"title": "Shuriken", "attack": 22},
+                            {"title": "Paper Bomb", "attack": 20}, {"title": "Recovery", "heal": 20}],
+                "HP": 350}
         return boss
+
+
+def generate_elite():
+    elite = {
+        "name": "Orochimaru",
+        "ability": [{"title": "Attack", "attack": 12}, {"title": "Recovery", "heal": 20}],
+        "HP": 350,
+        "MaxHP": 350
+    }
+    return elite
 
 
 def experience(character, monster_xp):
@@ -76,19 +82,16 @@ def display_battle_hp(character, monster):
 
 
 def monster_damage_sequence(character, monster):
-    monster_attack = random.randint(0, 5) + monster["Attack"]
-    print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
-    time.sleep(0.5)
-    character["HP"] -= monster_attack
-
-
-def boss_damage_sequence(character, boss):
-    boss_attacks_sequence = itertools.cycle(boss["ability"])
-    boss_attack = next(boss_attacks_sequence)
-    current_attack = random.randint(0, 5) + boss_attack["attack"]
-    print(f'{boss["name"]} use {boss_attack["title"]} for {current_attack} damage!')
-    time.sleep(0.5)
-    character["HP"] -= current_attack
+    monster_attacks_sequence = itertools.cycle(monster["ability"])
+    monster_attack = next(monster_attacks_sequence)
+    if monster_attack["title"] == "Recovery":
+        print(f'{monster["name"]} use {monster_attack["title"]} and heal himself {monster_attack["heal"]} point HP')
+        monster["HP"] += 20
+    else:
+        current_attack = random.randint(0, 3) + monster_attack["attack"]
+        print(f'{monster["name"]} use {monster_attack["title"]} and cause {current_attack} damage!')
+        time.sleep(0.5)
+        character["HP"] -= current_attack
 
 
 def character_damage_sequence(character, monster, character_attack="slice"):
@@ -131,36 +134,33 @@ def heal_character(character):
 
 
 def execute_battle_protocol(character, monster):
+
     while monster["HP"] > 0 and character["HP"] > 0:
         display_battle_menu()
         battle_action = int(input("What will you do?"))
 
         if battle_action == 1:
             character_damage_sequence(character, monster)
-            monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
-                else boss_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 2:
             jutsu_name = display_jutsu(character)
             character_damage_sequence(character, monster, jutsu_name)
-            monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
-                else boss_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 3:
             heal_character(character)
-            monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
-                else boss_damage_sequence(character, monster)
+            monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 4:
             escape_chance = random.randint(1, 10)
-            if monster['name'] != "Madara Uchiha" and escape_chance < 6:
+            if (monster['name'] != "Madara Uchiha" or monster['name'] != "Orochimaru") and escape_chance < 6:
                 print("You have escaped battle!")
                 printing_map(character)
                 break
             else:
                 print("Escape failed!")
-                monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
-                    else boss_damage_sequence(character, monster)
+                monster_damage_sequence(character, monster)
                 display_battle_hp(character, monster)
 
     if monster["HP"] <= 0:
