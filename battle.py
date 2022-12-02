@@ -137,22 +137,23 @@ def execute_battle_protocol(character, monster):
 
     while monster["HP"] > 0 and character["HP"] > 0:
         display_battle_menu()
-        battle_action = int(input("What will you do?"))
-
-        if battle_action == 1:
+        battle_action = input("What will you do?")
+        while battle_action not in ['1', '2', '3', '4']:
+            battle_action = input("What will you do?")
+        if int(battle_action) == 1:
             character_damage_sequence(character, monster)
             monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
-        elif battle_action == 2:
+        elif int(battle_action)== 2:
             jutsu_name = display_jutsu(character)
             character_damage_sequence(character, monster, jutsu_name)
             monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
-        elif battle_action == 3:
+        elif int(battle_action) == 3:
             heal_character(character)
             monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
-        elif battle_action == 4:
+        elif int(battle_action) == 4:
             escape_chance = random.randint(1, 10)
             if (monster['name'] != "Madara Uchiha" or monster['name'] != "Orochimaru") and escape_chance < 6:
                 print("You have escaped battle!")
