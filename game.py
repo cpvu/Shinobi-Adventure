@@ -87,20 +87,51 @@ def check_for_event(board, character):
     else:
         return "Empty Room"
 
+def display_final_boss_ascii_art():
+    print(""" ⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠻⠋⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣬⣍⣒⡢⡤⢀⡀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡶⠟⠓
+    ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠿⠓⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠙⠋⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⢀⣄⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⢀⡴⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⡀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⣿⣿⡿⠟⠛⢉⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣤⠔⠈⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡜⢆⠀⠀⠀⠀⠀
+    ⠀⠀⠈⠉⠀⠀⢀⣠⣾⣿⣿⣿⠟⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠘⡄⠀⠀⠀⢸⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡌⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣣⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⣠⠴⠛⠙⢦⠀⣀⡼⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⢋⣿⣿⠈⠻⣿⣿⡄⠀⠀⠀⠀
+    ⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⢀⣠⡾⣿⣿⣗⡲⣿⣿⣿⣿⣿⣿⣿⡿⣡⣼⣿⣿⣦⣤⣌⣙⣷⡄⠀⠀⠀
+    ⠀⠀⠀⢠⣿⣿⣿⣿⣿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢏⡇⠀⣠⣴⣿⣿⣿⣿⣿⣟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠉⢻⣿⣄⠀⠀
+    ⠀⠀⢠⣿⣿⣿⡟⠉⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⠈⣧⣻⣿⣿⣿⣿⣿⣿⡿⢿⡿⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⣤⡾⠃⡏⡇⠀
+    ⠀⠀⢸⣿⣿⠇⠳⣄⡀⢀⣾⣿⣿⣏⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⣸⣿⣿⣯⡛⢋⣿⣯⠤⠬⣙⣲⠤⠔⢦⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠖⠋⠀⠀⣿⡇⠀
+    ⠀⢠⣿⡿⢻⠀⠀⠀⠉⠛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢦⣿⡿⠉⠉⠉⠙⠛⠃⠒⠒⠚⠢⢄⡀⢈⡇⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⢠⡇⠀⠀
+    ⢀⡾⠋⢀⡾⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⡞⢸⣿⠃⠀⠀⠀⠀⠀⠈⠙⠲⣄⡀⠀⠉⢾⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⣸⡇⠀⠀
+    ⠀⠀⠀⣸⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⢸⡏⠀⢲⣄⠀⣠⣶⠂⠀⠀⠀⣹⡄⠀⡿⢹⣿⣿⣿⣿⣿⣿⣿⣿⣴⣿⣿⡿⠀⠀⠀⠀⢨⠿⠃⠀⠀
+    ⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠋⠻⢦⣤⣄⣹⡿⣟⣁⣀⣀⡴⠋⠙⢀⣞⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠤⣄⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⣿⠛⣄⢠⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⣍⡁⠀⠀⠛⠛⠛⡉⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠘⡆⠀⠀⠀⡂⠀⠀
+    ⠀⠀⠀⠛⠀⠈⢳⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠠⢍⡉⠉⣉⠉⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢇⢀⣴⡆⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⢸⣄⠀⠀⢸⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠀⢹⡏⢀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⢀⣼⣋⠞⠀⠀⠀⠀""")
+
+
+def display_final_boss_dialogue():
+    print("You've arrived to the the Uchiha Clan's dominion. He emits his powerful chakra and suddenly everything "
+          "around him craters.")
+    print("So.. you are the one. I heard of an unknown shinobi who travelled across this great land in hopes to defeat "
+          "me.")
+    print("I am Madara Uchiha and you will not stop me from casting this eternal dream state.")
+
 
 def execute_event_protocol(character, event):
     """
-       Execute the game event that corresponds to the character's board location.
+    Execute the game event that corresponds to the character's board location.
 
-       :param character: a dictionary object
-       :param event: a string value
-       :pre-condition: character must be a dictionary object containing key pair values relevant to the character's
-                       in-game stats
-       :pre-condition: event must be a string that represents the event type to be executed
-       :post-condition: Evaluate and execute the corresponding functions for the argument event string.
-       :post-condition: Return None if the user enters an empty room
-       :return: Return None if the user enters an empty room
-       """
+    :param character: a dictionary object
+    :param event: a string value
+    :pre-condition: character must be a dictionary object containing key pair values relevant to the character's
+                   in-game stats
+    :pre-condition: event must be a string that represents the event type to be executed
+    :post-condition: Evaluate and execute the corresponding functions for the argument event string.
+    :post-condition: Return None if the user enters an empty room
+    :return: Return None if the user enters an empty room
+    """
     if event == "Battle":
         monster = generate_monster(character)
         print(f"A {monster['name']} has appeared before you!")
@@ -112,8 +143,9 @@ def execute_event_protocol(character, event):
     elif event == "Boss":
         boss = generate_boss(character)
         if boss:
-            print("Boss is ready to fight you! No escape for boss fight!")
+            display_final_boss_dialogue()
             execute_battle_protocol(character, boss)
+            character["Goal Achieved"] = True
     elif event == "Elite":
         elite = generate_elite()
         print("Orochimaru is ready to fight you! No escape for boss fight!")
@@ -123,13 +155,19 @@ def execute_event_protocol(character, event):
         return
 
 
-def check_if_goal_attained(board, character):
-    pass
+def execute_victory():
+    print("Its all over... I can't believe I did it.")
+    print("Roars of victory yell out as the world witnessed your conquer.")
+    print("It seems as though you are fading away and now its time to go back to your world...")
+
+def check_if_goal_attained(character):
+    if character["Goal Achieved"]:
+        return True
 
 
 def game():
     """
-        Drives the game.
+        Drive the game.
     """
     rows = 10
     columns = 10
