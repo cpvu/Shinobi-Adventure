@@ -94,7 +94,7 @@ def heal_character(character):
     if character["Chakra"] < chakra_used:
         print("No more chakra available.. A grave mistake to heal.")
         return
-    if character["Chakra"] < character["Max Chakra"]:
+    if character["HP"] >= character["Max HP"]:
         print("Health is already full! I can't make a mistake like that again..")
         return
 
