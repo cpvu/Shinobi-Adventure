@@ -16,6 +16,11 @@ from health_room import execute_health_room
 
 
 def game_introduction():
+    """
+    Print a message introducing the story of the game.
+
+    :post-condition: Print out the storyline of the Shinobi World
+    """
     print(" ____ _  _ _ _  _ ____ ___  _ \n", " [__  |__| | |\\ | |  | |__] | \n", " ___] |  | | | \\| |__| |__] | \n")
     time.sleep(0.5)
     print("Welcome to the world of Shinobi, the land of ninjas and ninjitsu.")
@@ -37,7 +42,17 @@ def game_introduction():
 
 
 def game_over(character):
-    if character["HP"] < 0:
+    """
+    Return True if the character's HP is below 0 or below.
+
+    :param character: a dictionary object
+    :pre-condition: character must be a dictionary object that represents the character of the game, specifically
+                    containing a key value pair with a key of "HP" and value of integer.
+    :post-condition: Evaluate the integer value for key "HP" in the dictionary object character and return True if
+                     it is less than or equal to 0.
+    return: a boolean value, True if the value of key "HP" in the argument dictioanry is less than or equal to 0
+    """
+    if character["HP"] <= 0:
         print("You have died...")
         print("Game over, please try again")
         return True
@@ -45,6 +60,20 @@ def game_over(character):
 
 
 def check_for_event(board, character):
+    """
+    Evaluate the character's current board coordinates to execute the corresponding event on the game board.
+
+    :param board: a dictionary object
+    :param character: a dictionary object
+    :pre-condition: character must be a dictionary object that represents the character of the game, specifically
+                    containing a key value pair with a key value of "X" and "Y" each with integer values
+    :pre-condition: board must be a dictionary object that represents the game board containing key value pairs, where
+                    the key is a tuple that contains 2 integer values representing the board coordinate, and contains
+                    a string value that represents the room type.
+    :post-condition: Compare the values stored in the X and Y keys in the character dictionary to the corresponding
+                     key tuples in the board object to return a string value representing the event on the coordinate
+    :return: a string value, representing the event type stored on the board coordinate
+    """
     if board[(character["X"], character["Y"])] == "Treasure Room":
         return "Treasure"
     elif board[(character["X"], character["Y"])] == "Monster Room":
@@ -60,6 +89,18 @@ def check_for_event(board, character):
 
 
 def execute_event_protocol(character, event):
+    """
+       Execute the game event that corresponds to the character's board location.
+
+       :param character: a dictionary object
+       :param event: a string value
+       :pre-condition: character must be a dictionary object containing key pair values relevant to the character's
+                       in-game stats
+       :pre-condition: event must be a string that represents the event type to be executed
+       :post-condition: Evaluate and execute the corresponding functions for the argument event string.
+       :post-condition: Return None if the user enters an empty room
+       :return: Return None if the user enters an empty room
+       """
     if event == "Battle":
         monster = generate_monster(character)
         print(f"A {monster['name']} has appeared before you!")
@@ -87,6 +128,9 @@ def check_if_goal_attained(board, character):
 
 
 def game():
+    """
+        Drives the game.
+    """
     rows = 10
     columns = 10
     board = make_board(rows, columns)
