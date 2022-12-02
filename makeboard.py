@@ -14,8 +14,6 @@ def generate_room_type():
 def make_board(row, column):
     board = {(k, v): generate_room_type() for k in range(row) for v in range(column)}
     board[(0, 0)] = "Empty Room"
-    board[(0, 9)] = "Chest room"
-    board[(9, 0)] = "Chest room"
     board[(9, 9)] = "Boss room"
     board[(2, 2)] = "Health room"
     board[(2, 7)] = "Health room"

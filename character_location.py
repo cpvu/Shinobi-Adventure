@@ -1,7 +1,7 @@
 def printing_map(character):
-    default_map = ["C + + + + + + + + B", "+ + + + + + + + + +", "+ + H + + + + H + +", "+ + + + + + + + + +",
+    default_map = ["+ + + + + + + + + B", "+ + + + + + + + + +", "+ + H + + + + H + +", "+ + + + + + + + + +",
                    "+ + + + + + + + + +", "+ + + + + M + + + +", "+ + + + + + + + + +", "+ + H + + + + H + +",
-                   "+ + + + + + + + + +", "+ + + + + + + + + C"]
+                   "+ + + + + + + + + +", "+ + + + + + + + + +"]
     current_map = default_map[:]
     target_row = current_map[9 - character["Y"]].split(' ')
     target_row[character["X"]] = 'U'

@@ -67,10 +67,11 @@ def execute_event_protocol(character, event):
     elif event == "Treasure":
         execute_treasure_event(character)
     elif event == "Health Room":
-        execute_treasure_event(character)
+        execute_health_room(character)
     elif event == "Boss":
         boss = generate_boss(character)
         if boss:
+            print("Boss ready to fight you! No escape for boss fight!")
             execute_battle_protocol(character, boss)
     else:
         print("You've entered an empty room. There appears to be nothing in here..")
