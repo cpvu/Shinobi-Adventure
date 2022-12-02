@@ -39,6 +39,7 @@ def get_user_choice():
         print(f"{direction_tuple[0]}: {direction_tuple[1]}", end=" | ")
     user_choice = input("\nType 1 for moving North, 2 for moving East, 3 for moving West, 4 for moving South\n")
     while user_choice not in ['1', '2', '3', '4']:
+        print("Invalid input!")
         user_choice = input("Type 1 for moving North, 2 for moving East, 3 for moving West, 4 for moving South\n")
     direction = {k: v for (k, v) in enumerate(directions, 1)}
     return direction[int(user_choice)]
