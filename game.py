@@ -7,7 +7,7 @@ A01293003
 """
 import time
 from makeboard import make_board
-from battle import generate_monster, execute_battle_protocol, generate_boss
+from battle import generate_monster, execute_battle_protocol, generate_boss, generate_elite
 from treasureroom import execute_treasure_event
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
@@ -19,21 +19,21 @@ def game_introduction():
     print(" ____ _  _ _ _  _ ____ ___  _ \n", " [__  |__| | |\\ | |  | |__] | \n", " ___] |  | | | \\| |__| |__] | \n")
     time.sleep(0.5)
     print("Welcome to the world of Shinobi, the land of ninjas and ninjitsu.")
-    time.sleep(0.5)
+    time.sleep(0.2)
     print("Chakra is the core of the power of ninjitsu and using powerful jutsus.")
-    time.sleep(0.5)
+    time.sleep(0.2)
     print("You're not from this world?")
-    time.sleep(0.5)
+    time.sleep(0.2)
     print("This world is a little bit different from where you came from...")
-    time.sleep(0.5)
+    time.sleep(0.2)
     print("The world needs your help to defeat Madara Uchiha.")
-    time.sleep(0.5)
+    time.sleep(0.2)
     print("Madara Uchiha is trying to put the world of Shinobi into an infinite dream state called "
           "the Infinite Tsukuyomi.")
-    time.sleep(0.5)
+    time.sleep(0.2)
     print("I sense you have immense chakra, but you must first traverse through this land to "
           "gain more power and jutsus.\n")
-    time.sleep(0.5)
+    time.sleep(0.2)
 
 
 def game_over(character):
@@ -54,7 +54,7 @@ def check_for_event(board, character):
     elif board[(character["X"], character["Y"])] == "Boss room":
         return "Boss"
     elif board[(character["X"], character["Y"])] == "Elite room":
-        return "Elite room"
+        return "Elite"
     else:
         return "Empty Room"
 
@@ -71,8 +71,12 @@ def execute_event_protocol(character, event):
     elif event == "Boss":
         boss = generate_boss(character)
         if boss:
-            print("Boss ready to fight you! No escape for boss fight!")
+            print("Boss is ready to fight you! No escape for boss fight!")
             execute_battle_protocol(character, boss)
+    elif event == "Elite":
+        elite = generate_elite()
+        print("Orochimaru is ready to fight you! No escape for boss fight!")
+        execute_battle_protocol(character, elite)
     else:
         print("You've entered an empty room. There appears to be nothing in here..")
         return

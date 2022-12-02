@@ -1,9 +1,9 @@
-[{"name": "Bird", "HP": 100, "Attack": 5, "XP": 40, "Abilities": ["Scratch", "Flap"]},
-  {"name": "Fox", "HP": 60, "Attack": 10, "XP": 35, "Abilities": ["Swipe", "Bite"]},
-  {"name": "Burgular", "HP": 80, "Attack": 7, "XP": 60, "Abilities": ["Snatch", "Kunai Stab"]},
-  {"name": "Mist Village Shinobi", "HP": 170, "Attack": 5, "XP": 40, "Abilities": ["Mist slash", "Flurry"]},
-  {"name": "Nine Tailed Fox", "HP": 145, "Attack": 10, "XP": 95, "Abilities": ["Katon Enjutsu", "9 Orb Blast"]},
-  {"name": "Sage Frog", "HP": 160, "Attack": 7, "XP": 100, "Abilities": ["Earth Shake", "Suiton Rush"]},
-  {"name": "Akatsuki Member", "HP": 340, "Attack": 5, "XP": 175, "Abilities": ["Megalodon Blast", "Kamui Strike"]},
-  {"name": "Uchiha Clan Disciple", "HP": 300,  "Attack": 10, "XP": 200, "Abilities": ["Raikiri", "Amaterasu"]},
-  {"name": "Juugo The Destroyer", "HP": 290, "Attack": 7, "XP": 250, "Abilities": ["Taijutsu slam", "Destroyer Barrage"]}]
+[{"name": "Bird", "HP": 100, "XP": 50, "ability": [{"title": "Scratch", "attack": 5}, {"title": "Flap", "attack": 5}]},
+  {"name": "Fox", "HP": 60, "XP": 33, "ability": [{"title": "Swipe", "attack": 6}, {"title": "Bite", "attack": 8}]},
+  {"name": "Burgular", "HP": 80, "XP": 40, "ability": [{"title": "Snatch", "attack": 7}, {"title": "Kunai Stab", "attack": 8}]},
+  {"name": "Mist Village Shinobi", "HP": 170, "XP": 25, "ability": [{"title": "Mist slash", "attack": 13}, {"title": "Flurry", "attack": 11}]},
+  {"name": "Nine Tailed Fox", "HP": 145, "XP": 20, "ability": [{"title": "Katon Enjutsu", "attack": 10}, {"title": "9 Orb Blast", "attack": 11}]},
+  {"name": "Sage Frog", "HP": 160, "XP": 12, "ability": [{"title": "Earth Shake", "attack": 9}, {"title": "Suiton Rush", "attack": 14}]},
+  {"name": "Akatsuki Member", "HP": 300, "XP": 15, "ability": [{"title": "Megalodon Blast", "attack": 15}, {"title": "Kamui Strike", "attack": 16}]},
+  {"name": "Uchiha Clan Disciple", "HP": 260, "XP": 13, "ability": [{"title": "Raikiri", "attack": 14}, {"title": "Amaterasu", "attack": 14}]},
+  {"name": "Juugo The Destroyer", "HP": 250, "XP": 12, "ability": [{"title": "Taijutsu slam", "attack": 16}, {"title": "Destroyer Barrage", "attack": 17}]}]

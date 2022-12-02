@@ -2,7 +2,7 @@ import random
 
 
 def character_has_leveled(character):
-    if character["XP"] >= character["XPToLevelUp"]:
+    if character["XP"] >= character["XPToLevelUp"] and character["Level"] < 3:
         return True
 
 
@@ -27,7 +27,6 @@ def assign_experience(character):
     character["XPToLevelUp"] += 150
 
     print(f"\t \t \t Congratulations, you are now Level {character['Level']}!")
-
 
 
 def execute_character_glow_up():
