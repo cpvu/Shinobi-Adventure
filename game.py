@@ -191,7 +191,7 @@ def game():
                 assign_experience(character)
                 assign_stats(character)
                 execute_character_glow_up()
-            achieved_goal = check_if_goal_attained(board, character)
+            achieved_goal = check_if_goal_attained(character)
         # else:
         #     # do something here if the move is not valid
         #     pass
