@@ -17,7 +17,7 @@ def describe_current_location(character):
 
 
 def get_user_choice():
-    directions = ["North", "East", "West", "South"]
+    directions = ["North", "West", "East", "South"]
     for direction_tuple in enumerate(directions, 1):
         print(f"{direction_tuple[0]}: {direction_tuple[1]}", end=" | ")
     user_choice = input("\nType 1 for moving North, 2 for moving East, 3 for moving West, 4 for moving South\n")

@@ -50,7 +50,7 @@ def check_for_event(board, character):
     elif board[(character["X"], character["Y"])] == "Monster Room":
         return "Battle"
     elif board[(character["X"], character["Y"])] == "Health room":
-        return "Health room"
+        return "Health"
     elif board[(character["X"], character["Y"])] == "Boss room":
         return "Boss"
     elif board[(character["X"], character["Y"])] == "Elite room":
@@ -66,7 +66,7 @@ def execute_event_protocol(character, event):
         execute_battle_protocol(character, monster)
     elif event == "Treasure":
         execute_treasure_event(character)
-    elif event == "Health Room":
+    elif event == "Health":
         execute_health_room(character)
     elif event == "Boss":
         boss = generate_boss(character)
