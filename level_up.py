@@ -24,7 +24,7 @@ def assign_experience(character):
 
     character["Level"] += 1
     character["XP"] = remaining_experience
-    character["XPToLevelUp"] += 150
+    character["XPToLevelUp"] += (character["XP"] / 2 + 100)
 
     print(f"\t \t \t Congratulations, you are now Level {character['Level']}!")
 
