@@ -106,9 +106,9 @@ def game():
                 assign_stats(character)
                 execute_character_glow_up()
             achieved_goal = check_if_goal_attained(board, character)
-        else:
-            # do something here if the move is not valid
-            pass
+        # else:
+        #     # do something here if the move is not valid
+        #     pass
 
 
 def main():

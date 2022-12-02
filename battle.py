@@ -2,6 +2,7 @@ import random
 import json
 import time
 from health_room import check_health_and_chakra_max
+from character_location import printing_map
 import itertools
 
 
@@ -69,7 +70,7 @@ def display_normal_attack_sequence(character, monster):
 
 
 def display_battle_hp(character, monster):
-    print(f'{monster["name"]} - HP:{monster["HP"]}/{monster["MaxHP"]}HP')
+    print(f'{monster["name"]} - HP:{monster["HP"]}HP')
     print(f'{character["Name"]} - HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
           f'{character["Max Chakra"]}')
 
@@ -151,11 +152,16 @@ def execute_battle_protocol(character, monster):
                 else boss_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif battle_action == 4:
-            if monster['name'] != "Madara Uchiha":
+            escape_chance = random.randint(1, 10)
+            if monster['name'] != "Madara Uchiha" and escape_chance < 6:
                 print("You have escaped battle!")
+                printing_map(character)
                 break
             else:
-                print("You can't escape from a boss fight!")
+                print("Escape failed!")
+                monster_damage_sequence(character, monster) if monster['name'] != "Madara Uchiha" \
+                    else boss_damage_sequence(character, monster)
+                display_battle_hp(character, monster)
 
     if monster["HP"] <= 0:
         print("The foe has been vanquished!")
