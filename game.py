@@ -24,21 +24,21 @@ def game_introduction():
     print(" ____ _  _ _ _  _ ____ ___  _ \n", " [__  |__| | |\\ | |  | |__] | \n", " ___] |  | | | \\| |__| |__] | \n")
     time.sleep(0.5)
     print("Welcome to the world of Shinobi, the land of ninjas and ninjitsu.")
-    time.sleep(0.2)
+    time.sleep(0.5)
     print("Chakra is the core of the power of ninjitsu and using powerful jutsus.")
-    time.sleep(0.2)
+    time.sleep(0.5)
     print("You're not from this world?")
-    time.sleep(0.2)
+    time.sleep(0.5)
     print("This world is a little bit different from where you came from...")
-    time.sleep(0.2)
+    time.sleep(0.5)
     print("The world needs your help to defeat Madara Uchiha.")
-    time.sleep(0.2)
+    time.sleep(0.5)
     print("Madara Uchiha is trying to put the world of Shinobi into an infinite dream state called "
           "the Infinite Tsukuyomi.")
-    time.sleep(0.2)
+    time.sleep(0.5)
     print("I sense you have immense chakra, but you must first traverse through this land to "
           "gain more power and jutsus.\n")
-    time.sleep(0.2)
+    time.sleep(0.5)
 
 
 def game_over(character):
