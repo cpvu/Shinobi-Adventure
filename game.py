@@ -6,9 +6,9 @@ Hanxiao Mao
 A01293003
 """
 import time
-from makeboard import make_board
+from generate_game_board import generate_game_board
 from battle import generate_monster, execute_battle_protocol, generate_elite_monster, generate_boss_monster
-from treasureroom import execute_treasure_event
+from treasureroom import generate_game_events
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
 from level_up import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
@@ -46,8 +46,10 @@ def game_over(character):
     Return True if the character's HP is below 0 or below.
 
     :param character: a dictionary object
-    :pre-condition: character must be a dictionary object that represents the character of the game, specifically
-                    containing a key value pair with a key of "HP" and value of integer.
+    :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
+                   "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
+                   containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                   a dictionary object.
     :post-condition: Evaluate the integer value for key "HP" in the dictionary object character and return True if
                      it is less than or equal to 0.
     return: a boolean value, True if the value of key "HP" in the argument dictioanry is less than or equal to 0
@@ -154,7 +156,7 @@ def execute_event_protocol(character, event):
         print(f"A {monster['name']} has appeared before you!")
         execute_battle_protocol(character, monster)
     elif event == "Treasure":
-        execute_treasure_event(character)
+        generate_game_events(character)
     elif event == "Health":
         execute_health_room(character)
     elif event == "Boss":
@@ -171,12 +173,28 @@ def execute_event_protocol(character, event):
 
 
 def execute_victory():
+    """
+    Print the game victory dialogue.
+
+    :post-condition: print the end game victory message
+    """
     print("Its all over... I can't believe I did it.")
     print("Roars of victory yell out as the world witnessed your conquer.")
     print("It seems as though you are fading away and now its time to go back to your world...")
 
 
 def check_if_goal_attained(character):
+    """
+    :param character: a dictionary object
+    :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
+                    "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
+                    containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                    a dictionary object.
+    :post-condition: Evaluate if the key "Goal Achieved" in the character dictionary object contains a boolean value,
+                     True
+    :return: a boolean value, True if the argument character dictionary object key "Goal Achieved" contains a boolean
+             value of True
+    """
     if character["Goal Achieved"]:
         return True
 
@@ -187,7 +205,7 @@ def game():
     """
     rows = 10
     columns = 10
-    board = make_board(rows, columns)
+    board = generate_game_board(rows, columns)
     game_introduction()
     character = make_character(input("What is your name fellow shinobi?\n"))
     describe_current_location(character)
