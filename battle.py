@@ -102,7 +102,7 @@ def display_battle_menu():
         print(f"{battle_options[0]} - {battle_options[1]}")
 
 
-def display_jutsu(character: dict):
+def display_jutsu(character: dict) -> tuple:
     """
     Print the jutsu as enumeration with numbers start from 1.
 
@@ -122,7 +122,7 @@ def display_jutsu(character: dict):
     return jutsu_numbers, jutsu_selection
 
 
-def get_jutsu_choice(character):
+def get_jutsu_choice(character: dict) -> str:
     """
     Return character's jutsu key according to user input.
 
@@ -149,7 +149,7 @@ def get_jutsu_choice(character):
     return jutsu_numbers_and_selection[1][int(jutsu_choice) - 1]
 
 
-def display_battle_hp(character, monster):
+def display_battle_hp(character: dict, monster:dict):
     """
     Print the monster name and HP, character Name, current HP, current Chakra.
 
@@ -167,7 +167,7 @@ def display_battle_hp(character, monster):
           f'{character["Max Chakra"]}')
 
 
-def monster_damage_sequence(character, monster):
+def monster_damage_sequence(character: dict, monster: dict):
     """
     Decide the monster behavior according to the ability.
 
@@ -191,7 +191,7 @@ def monster_damage_sequence(character, monster):
         character["HP"] -= current_attack
 
 
-def character_damage_sequence(character, monster, character_attack="slice"):
+def character_damage_sequence(character: dict, monster: dict, character_attack: str = "slice"):
     """
     Reduce monster "HP" according to character_attack.
 
@@ -226,7 +226,7 @@ def character_damage_sequence(character, monster, character_attack="slice"):
     monster["HP"] -= character_damage
 
 
-def heal_character(character):
+def heal_character(character: dict):
     """
     Increase character "HP", maintain the same if character "Chakra" is not enough or "HP" already full.
 
@@ -253,7 +253,7 @@ def heal_character(character):
     print(f"You expended {chakra_used} chakra.")
 
 
-def execute_battle_protocol(character, monster):
+def execute_battle_protocol(character: dict, monster: dict):
     """
     Execute the battle sequence according to user input.
 

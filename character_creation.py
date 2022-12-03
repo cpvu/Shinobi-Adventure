@@ -7,6 +7,8 @@ A01293003
 
 Contains functions to create the game character.
 """
+
+
 def make_character(character_name: str) -> dict:
     """
     Create a game character according to character_name parameter.

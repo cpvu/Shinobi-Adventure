@@ -266,7 +266,6 @@ def game():
     execute_victory()
 
 
-
 def main():
     game()
 
