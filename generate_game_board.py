@@ -23,8 +23,10 @@ def generate_room_type():
         return "Monster Room"
 
 
-def make_board(row, column):
+def generate_game_board(row, column):
     """
+    Generate a dictionary object with key value pairs representing the coordinates of the game board.
+
     :param row: an integer value
     :param column: an integer value
     :pre-condition: row must be an integer value greater than 0
@@ -43,12 +45,3 @@ def make_board(row, column):
 
     return board
 
-
-def main():
-    # rows = input("Enter the amount of rows:")
-    # columns = input("Enter the amount of columns:")
-    print(make_board(10, 10))
-
-
-if __name__ == '__main__':
-    main()
