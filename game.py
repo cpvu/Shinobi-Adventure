@@ -248,11 +248,8 @@ def game():
             if character_has_leveled(character):
                 assign_experience(character)
                 assign_stats(character)
-                execute_character_glow_up()
+                execute_character_glow_up(character)
             achieved_goal = check_if_goal_attained(character)
-        # else:
-        #     # do something here if the move is not valid
-        #     pass
 
 
 def main():
