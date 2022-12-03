@@ -15,4 +15,3 @@ def make_character(character_name: str):
                  "Goal Achieved": False,
                  "Jutsu": {("Katon", "Unleash a fiery blast of chakra!", "A powerful fire blast"): 22}}
     return character
-

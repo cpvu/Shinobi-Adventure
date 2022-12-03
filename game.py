@@ -87,6 +87,7 @@ def check_for_event(board, character):
     else:
         return "Empty Room"
 
+
 def display_final_boss_ascii_art():
     print(""" ⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠻⠋⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀
@@ -127,11 +128,13 @@ def validate_boss_fight(character):
               "once you have reached Level 3!")
         return False
 
+
 def elite_monster_dialogue():
     print("You arrive at a path with a vast forest ahead. Stepping forward, you suddenly hear the sounds of hissing.")
     print("Suddenly, snakes appear to be falling from the trees. A dark figure emerges out of the forest.")
     print("Orochimaru: Hsss I am Orochimaru the legendary snake sannin. Your chakra smells very fruitful...")
     print("You've heard stories of this before in the village you visted, it looks like you have to defeat Orochimaru!")
+
 
 def execute_event_protocol(character, event):
     """
