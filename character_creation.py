@@ -1,7 +1,7 @@
 def make_character(character_name: str):
     character = {"Name": character_name,
-                 "X": 8,
-                 "Y": 8,
+                 "X": 5,
+                 "Y": 4,
                  "Level": 1,
                  "XP": 0,
                  "XPToLevelUp": 100,

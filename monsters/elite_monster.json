@@ -1,0 +1,4 @@
+{"name": "Orochimaru",
+  "ability": [{"title": "Attack", "attack": 12}, {"title": "Recovery", "heal": 20}],
+  "HP": 350,
+  "MaxHP": 350}
