@@ -145,7 +145,7 @@ def validate_boss_fight(character):
     if character["Level"] == 3:
         return True
     else:
-        print("You've arrived at the Uchiha Dominion, but you are not strong enough yet.. Return here"
+        print("You've arrived at the Uchiha Dominion, but you are not strong enough yet.. Return here "
               "once you have reached Level 3!")
         return False
 
