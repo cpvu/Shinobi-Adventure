@@ -197,6 +197,7 @@ def execute_event_protocol(character, event):
         execute_health_room(character)
     elif event == "Boss":
         if validate_boss_fight(character):
+            display_final_boss_ascii_art()
             display_final_boss_dialogue()
             execute_battle_protocol(character, generate_boss_monster())
             character["Goal Achieved"] = True
@@ -262,6 +263,8 @@ def game():
                 assign_stats(character)
                 execute_character_glow_up(character)
             achieved_goal = check_if_goal_attained(character)
+    execute_victory()
+
 
 
 def main():
