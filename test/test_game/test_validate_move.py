@@ -1,5 +1,5 @@
 from unittest import TestCase
-from game import validate_move
+from character_location import validate_move
 import io
 from unittest.mock import patch
 
