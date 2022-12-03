@@ -8,7 +8,7 @@ A01293003
 import time
 from generate_game_board import generate_game_board
 from battle import generate_monster, execute_battle_protocol, generate_elite_monster, generate_boss_monster
-from treasureroom import generate_game_events
+from game_events import generate_game_events
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
 from level_up import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
