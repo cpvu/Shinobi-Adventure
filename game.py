@@ -204,7 +204,7 @@ def execute_event_protocol(character, event):
         elite_monster_dialogue()
         execute_battle_protocol(character, generate_elite_monster())
         elite_monster_defeat()
-        execute_open_sacred_scroll()
+        execute_open_sacred_scroll(character)
     else:
         print("You've entered an empty room. There appears to be nothing in here..")
         return
