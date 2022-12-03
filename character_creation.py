@@ -1,4 +1,12 @@
-def make_character(character_name: str):
+def make_character(character_name: str) -> dict:
+    """
+    Create a game character according to character_name parameter.
+
+    :param character_name: a string represent the character name
+    :precondition: character_name must be string type
+    :post condition: generate a dictionary that has all the stats for character
+    :return: a dictionary that has all the stats for character
+    """
     character = {"Name": character_name,
                  "X": 5,
                  "Y": 4,
