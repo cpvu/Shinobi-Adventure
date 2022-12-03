@@ -6,7 +6,7 @@ from health_room import check_health_and_chakra_max
 from character_location import describe_current_location
 
 
-def generate_elite_monster():
+def generate_elite_monster() -> dict:
     """
     Read and generate the elite monster from elite_monster.json file.
 
@@ -27,7 +27,7 @@ def generate_elite_monster():
         return elite_monster
 
 
-def generate_boss_monster():
+def generate_boss_monster() -> dict:
     """
     Read and generate the boss from boss.json file.
 
@@ -48,7 +48,7 @@ def generate_boss_monster():
         return boss
 
 
-def generate_monster(character):
+def generate_monster(character: dict) -> dict:
     """
     Read and generate a dictionary that contain a random monsters information from monsters.json file.
 
@@ -73,13 +73,29 @@ def generate_monster(character):
             return all_monsters[random.randint(0, 8)]
 
 
-def experience(character, monster_xp):
+def experience(character: dict, monster_xp: int):
+    """
+    Add monster_xp to the value of "XP" key in character and print relevant information.
+
+    :param character: a dictionary that contain an "XP" key, type of the value of "XP" key is integer
+    :param monster_xp: a positive integer
+    :precondition: character must be a dictionary that contain at least an "XP" key, the value of "XP" key must be a
+                   positive integer
+    :precondition: monster_xp must be a positive integer
+    :post condition: Add monster_xp to the value of "XP" key in character and print the experience gained
+    """
     character["XP"] += monster_xp
     time.sleep(0.5)
     print(f"You have gained {monster_xp} experience!")
 
 
 def display_battle_menu():
+    """
+    Print "Attack", "Jutsu", "Heal", "Flee" as enumeration with numbers that start from 1.
+
+    :precondition: no precondition
+    :post condition:  print "Attack", "Jutsu", "Heal", "Flee" as enumeration with numbers that start from 1
+    """
     combat_options = ("Attack", "Jutsu", "Heal", "Flee")
 
     for battle_options in enumerate(combat_options, 1):
@@ -87,6 +103,11 @@ def display_battle_menu():
 
 
 def display_jutsu(character: dict):
+    """
+
+    :param character:
+    :return:
+    """
     jutsu_selection = [key for key in character["Jutsu"].keys()]
     jutsu_numbers = []
 
@@ -106,6 +127,15 @@ def display_jutsu(character: dict):
 
 
 def display_battle_hp(character, monster):
+    """
+    Print the monster name and HP, character Name, current HP, current Chakra.
+
+    :param character: a dictionary have "Name", "HP", "Max HP", "Chakra", "Max Chakra" as keys
+    :param monster: a dictionary have "name", "HP" as keys
+    :precondition: character must be a dictionary that contain "Name", "HP", "Max HP", "Chakra", "Max Chakra" as keys
+    :precondition: monster must be a dictionary have "name", "HP" as keys
+    :post condition: print the monster name and HP, character Name, current HP, current Chakra.
+    """
     print(f'{monster["name"]} - HP:{monster["HP"]}HP')
     print(f'{character["Name"]} - HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
           f'{character["Max Chakra"]}')
