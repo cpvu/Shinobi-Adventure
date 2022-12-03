@@ -118,6 +118,7 @@ def display_jutsu(character: dict):
     for jutsu in enumerate(jutsu_selection, 1):
         print(f"{jutsu[0]} - {jutsu[1][0]} - {jutsu[1][2]}")
         jutsu_numbers.append(str(jutsu[0]))
+
     return jutsu_numbers, jutsu_selection
 
 
