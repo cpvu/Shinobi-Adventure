@@ -154,8 +154,11 @@ def display_battle_hp(character, monster):
 
     :param character: a dictionary have "Name", "HP", "Max HP", "Chakra", "Max Chakra" as keys
     :param monster: a dictionary have "name", "HP" as keys
-    :precondition: character must be a dictionary that contain "Name", "HP", "Max HP", "Chakra", "Max Chakra" as keys
-    :precondition: monster must be a dictionary have "name", "HP" as keys
+    :precondition: character must be a dictionary that contain "Name" key, value should be non-empty string
+    :precondition: character must have "HP", "Max HP", "Chakra", "Max Chakra" as keys, all values should be non-zero
+                   positive integer
+    :precondition: monster must be a dictionary have "name" key, value should be non-empty string, "HP" key, value
+                   should be non-zero positive integer
     :post condition: print the monster name and HP, character Name, current HP, current Chakra.
     """
     print(f'{monster["name"]} - HP:{monster["HP"]}HP')
