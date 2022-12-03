@@ -52,7 +52,7 @@ def assign_stats(character):
         :precondition: stat_key must be string
         :precondition: stat_value must be integer
         :post condition: increase stat_key by 30 percent for the stat_key in combat_stats
-        :return: stat_key, stat_value as tuple
+        :return: stat_key, stat_value as tuple object
         """
         if stat_key in combat_stats:
             stat_value *= 1.3
@@ -81,8 +81,6 @@ def assign_experience(character):
     character["Level"] += 1
     character["XP"] = remaining_experience
     character["XPToLevelUp"] += (character["XPToLevelUp"] / 2 + 100)
-
-
 
 
 def execute_character_glow_up(character):
