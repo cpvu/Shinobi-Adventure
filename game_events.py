@@ -4,6 +4,8 @@ A01291758
 
 Hanxiao Mao
 A01293003
+
+Contain functions for in game events.
 """
 import random
 import time

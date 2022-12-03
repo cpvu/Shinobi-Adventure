@@ -1,3 +1,12 @@
+"""
+Calvin Vu
+A01291758
+
+Hanxiao Mao
+A01293003
+
+Contains functions for leveling up the character.
+"""
 def character_has_leveled(character):
     """
     Determine if character is ready to level.

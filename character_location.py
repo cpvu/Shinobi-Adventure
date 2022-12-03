@@ -1,3 +1,14 @@
+"""
+Calvin Vu
+A01291758
+
+Hanxiao Mao
+A01293003
+
+Contains functions for character and board locations.
+"""
+
+
 def describe_current_location(character):
     """
     Print the game board.

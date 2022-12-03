@@ -4,6 +4,8 @@ A01291758
 
 Hanxiao Mao
 A01293003
+
+Contains main game file and functions.
 """
 import time
 from generate_game_board import generate_game_board
