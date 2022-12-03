@@ -125,7 +125,7 @@ def execute_sacred_water_event(character):
     time.sleep(1)
     print("There is a river nearby, a villager tells you that drinking this water brings about good fortune.")
     time.sleep(1)
-    print("You take a handful of the water and drink it. ")
+    print("You take a handful of the water and drink it.")
     time.sleep(1)
     random_damage = random.randint(0, 10)
     character["HP"] -= random_damage
@@ -145,12 +145,11 @@ def execute_good_fortune_event(character):
     :post-condition: assign an increase of a integer value of 25 to the character dictionary objects key value "Attack"
                      and "Magic"
     """
-
     print("You stroll along and look for a place to sleep for the night.")
     time.sleep(1)
     print("Suddenly you're struck with a mind numbing headache. Your vision blurs immensely.")
     time.sleep(1)
-    print("You hear a ghostly voice.. 'Uchiha... revenge..'")
+    print("You hear a ghostly voice.. 'Uchiha... revenge..")
     print("...ta..ke m..y eye..s..I..am..sasuke...uchiha...the..mangekou...sharingan.. is.. no..w..yo..urs...")
     time.sleep(2)
     print("You snap out of it. Your vision, suddenly clear. But you feel like now you see so much more.")
