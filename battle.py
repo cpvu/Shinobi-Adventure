@@ -6,7 +6,18 @@ from health_room import check_health_and_chakra_max
 from character_location import describe_current_location
 
 
-def generate_elite_monster():
+def generate_elite_monster() -> dict:
+    """
+    Read and generate the elite monster from elite_monster.json file.
+
+    :precondition: the elite monster information must store as an object in json file
+    :post condition: read the elite monster information from json object and return it as dictionary
+    :raises FileNotFoundError: if 'elite_monster.json' not exist or not exist in the 'monsters' directory
+    :return: a dictionary store all the monster information
+    >>> generate_elite_monster()
+    {'name': 'Orochimaru', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Recovery', 'heal': 20}], \
+'HP': 350, 'MaxHP': 350, 'XP': 100}
+    """
     try:
         with open("monsters/elite_monster.json") as fileobject:
             elite_monster = json.load(fileobject)
@@ -16,7 +27,18 @@ def generate_elite_monster():
         return elite_monster
 
 
-def generate_boss_monster():
+def generate_boss_monster() -> dict:
+    """
+    Read and generate the boss from boss.json file.
+
+    :precondition: boss information must store as an object in json file
+    :post condition: read the boss information from json object and return it as dictionary
+    :raises FileNotFoundError: if 'boss.json' not exist or not exist in the 'monsters' directory
+    :return: a dictionary store all the boss information
+    >>> generate_boss_monster()
+    {'name': 'Madara Uchiha', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Susanoo', 'attack': 28}, \
+{'title': 'Gunbai', 'attack': 20}, {'title': 'Recovery', 'heal': 20}], 'HP': 350, 'XP': 0}
+    """
     try:
         with open("monsters/boss.json") as fileobject:
             boss = json.load(fileobject)
@@ -26,7 +48,17 @@ def generate_boss_monster():
         return boss
 
 
-def generate_monster(character):
+def generate_monster(character: dict) -> dict:
+    """
+    Read and generate a dictionary that contain a random monsters information from monsters.json file.
+
+    :param character: a dictionary that must have a "Level" key, value must between [1, 3]
+    :precondition: monsters information must store as objects in an array in json file
+    :post condition: return a dictionary that store a random monster information in 'monsters.json' file according to
+                     the character "Level" value
+    :raises FileNotFoundError: if 'monsters.json' not exist or not exist in the 'monsters' directory
+    :return: a dictionary that contain a random monster information in 'monsters.json' file
+    """
     try:
         with open("monsters/monsters.json") as fileobject:
             all_monsters = json.load(fileobject)
@@ -41,13 +73,29 @@ def generate_monster(character):
             return all_monsters[random.randint(0, 8)]
 
 
-def experience(character, monster_xp):
+def experience(character: dict, monster_xp: int):
+    """
+    Add monster_xp to the value of "XP" key in character and print relevant information.
+
+    :param character: a dictionary that contain an "XP" key, type of the value of "XP" key is integer
+    :param monster_xp: a positive integer
+    :precondition: character must be a dictionary that contain at least an "XP" key, the value of "XP" key must be a
+                   positive integer
+    :precondition: monster_xp must be a positive integer
+    :post condition: Add monster_xp to the value of "XP" key in character and print the experience gained
+    """
     character["XP"] += monster_xp
     time.sleep(0.5)
     print(f"You have gained {monster_xp} experience!")
 
 
 def display_battle_menu():
+    """
+    Print "Attack", "Jutsu", "Heal", "Flee" as enumeration with numbers that start from 1.
+
+    :precondition: no precondition
+    :post condition:  print "Attack", "Jutsu", "Heal", "Flee" as enumeration with numbers that start from 1
+    """
     combat_options = ("Attack", "Jutsu", "Heal", "Flee")
 
     for battle_options in enumerate(combat_options, 1):
@@ -55,25 +103,43 @@ def display_battle_menu():
 
 
 def display_jutsu(character: dict):
+    """
+
+    :param character:
+    :return:
+    """
     jutsu_selection = [key for key in character["Jutsu"].keys()]
     jutsu_numbers = []
-
     for jutsu in enumerate(jutsu_selection, 1):
         print(f"{jutsu[0]} - {jutsu[1][0]} - {jutsu[1][2]}")
         jutsu_numbers.append(str(jutsu[0]))
+    return jutsu_numbers, jutsu_selection
 
+
+def get_jutsu_choice(character):
+    jutsu_numbers_and_selection = display_jutsu(character)
     jutsu_choice = (input("Select your jutsu or enter q to go back"))
     if jutsu_choice == 'q':
         return 'q'
-
-    if jutsu_choice not in jutsu_numbers:
+    while jutsu_choice not in jutsu_numbers_and_selection[0]:
         print("Invalid input")
-        return 'q'
+        jutsu_choice = (input("Select your jutsu or enter q to go back"))
+        if jutsu_choice == 'q':
+            return 'q'
 
-    return jutsu_selection[int(jutsu_choice) - 1]
+    return jutsu_numbers_and_selection[1][int(jutsu_choice) - 1]
 
 
 def display_battle_hp(character, monster):
+    """
+    Print the monster name and HP, character Name, current HP, current Chakra.
+
+    :param character: a dictionary have "Name", "HP", "Max HP", "Chakra", "Max Chakra" as keys
+    :param monster: a dictionary have "name", "HP" as keys
+    :precondition: character must be a dictionary that contain "Name", "HP", "Max HP", "Chakra", "Max Chakra" as keys
+    :precondition: monster must be a dictionary have "name", "HP" as keys
+    :post condition: print the monster name and HP, character Name, current HP, current Chakra.
+    """
     print(f'{monster["name"]} - HP:{monster["HP"]}HP')
     print(f'{character["Name"]} - HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
           f'{character["Max Chakra"]}')
@@ -144,7 +210,7 @@ def execute_battle_protocol(character, monster):
             monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif int(battle_action) == 2:
-            jutsu_name = display_jutsu(character)
+            jutsu_name = get_jutsu_choice(character)
             if jutsu_name == 'q':
                 continue
             character_damage_sequence(character, monster, jutsu_name)
