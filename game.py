@@ -76,9 +76,9 @@ def check_for_event(board, character):
                      key tuples in the board object to return a string value representing the event on the coordinate
     :return: a string value, representing the event type stored on the board coordinate
     """
-    if board[(character["X"], character["Y"])] == "Treasure Room":
-        return "Treasure"
-    elif board[(character["X"], character["Y"])] == "Monster Room":
+    if board[(character["X"], character["Y"])] == "Game Event":
+        return "Game Event"
+    elif board[(character["X"], character["Y"])] == "Monster Battle":
         return "Battle"
     elif board[(character["X"], character["Y"])] == "Health room":
         return "Health"
@@ -145,7 +145,7 @@ def validate_boss_fight(character):
     if character["Level"] == 3:
         return True
     else:
-        print("You've arrived at the Uchiha Dominion, but you are not strong enough yet.. Return here"
+        print("You've arrived at the Uchiha Dominion, but you are not strong enough yet.. Return here "
               "once you have reached Level 3!")
         return False
 

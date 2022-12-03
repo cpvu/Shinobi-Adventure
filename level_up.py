@@ -71,6 +71,8 @@ def assign_experience(character):
     :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
                    "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
                    containing integer values, and  "Jutsu" containing a dictionary object.
+    :pre-condition: character "XP" key value must be greater than "XPToLevelUp" key value
+    :pre-condition: character "Level" key value must be less than 3
     :post-condition: Assign an increase in level and the appropriate amount of current experience for the new level
                      and the next level
     """
@@ -78,7 +80,7 @@ def assign_experience(character):
 
     character["Level"] += 1
     character["XP"] = remaining_experience
-    character["XPToLevelUp"] += (character["XP"] / 2 + 100)
+    character["XPToLevelUp"] += (character["XPToLevelUp"] / 2 + 100)
 
 
 

@@ -84,6 +84,3 @@ def move_character(character, direction):
         character["X"] += 1
     elif direction == "West":
         character["X"] -= 1
-    else:
-        print('Invalid direction chosen!')
-

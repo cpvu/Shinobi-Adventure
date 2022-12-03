@@ -19,9 +19,9 @@ def generate_room_type():
     if 0 <= random_number < 45:
         return "Empty Room"
     elif 45 <= random_number < 59:
-        return "Treasure Room"
+        return "Game Event"
     elif 60 <= random_number <= 100:
-        return "Monster Room"
+        return "Monster Battle"
 
 
 def generate_game_board(row, column):
