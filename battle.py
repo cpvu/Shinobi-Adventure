@@ -16,7 +16,7 @@ def generate_elite_monster() -> dict:
     :return: a dictionary store all the monster information
     >>> generate_elite_monster()
     {'name': 'Orochimaru', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Recovery', 'heal': 20}], \
-    'HP': 350, 'MaxHP': 350, 'XP': 100}
+'HP': 350, 'MaxHP': 350, 'XP': 100}
     """
     try:
         with open("monsters/elite_monster.json") as fileobject:
