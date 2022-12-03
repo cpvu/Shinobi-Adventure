@@ -43,14 +43,24 @@ def assign_stats(character):
     """
     combat_stats = ["Max HP", "HP", "Attack", "Magic", "Chakra", "Max Chakra"]
 
-    def map_level_up(key, value):
-        if key in combat_stats:
-            value *= 1.3
-            value = int(value)
-        return key, value
+    def map_stats(stat_key, stat_value):
+        """
+        Increase the stat_value by 30 percent for the stat_key in combat_stats.
 
-    for k, v in map(map_level_up, character.keys(), character.values()):
-        character[k] = v
+        :param stat_key: a dictionary key
+        :param stat_value: a dictionary value
+        :precondition: stat_key must be string
+        :precondition: stat_value must be integer
+        :post condition: increase stat_key by 30 percent for the stat_key in combat_stats
+        :return: stat_key, stat_value as tuple
+        """
+        if stat_key in combat_stats:
+            stat_value *= 1.3
+            stat_value = int(stat_value)
+        return stat_key, stat_value
+
+    for key, value in map(map_stats, character.keys(), character.values()):
+        character[key] = value
 
 
 def assign_experience(character):
