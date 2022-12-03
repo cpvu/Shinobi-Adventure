@@ -6,7 +6,16 @@ from character_location import printing_map
 import itertools
 
 
-def generate_monster(character):
+def generate_monster(character, special_monster=None):
+    if special_monster == "boss":
+        with open("monsters/boss.json") as fileobject:
+            boss_monster = json.load(fileobject)
+            return boss_monster
+    elif special_monster == "elite_monster":
+        with open("monsters/elite_monster.json") as fileobject:
+            elite_monster = json.load(fileobject)
+            return elite_monster
+
     with open("monsters/monsters.json") as fileobject:
         all_monsters = json.load(fileobject)
         if character["Level"] == 1:
@@ -15,27 +24,6 @@ def generate_monster(character):
             return all_monsters[random.randint(0, 5)]
         elif character["Level"] == 3:
             return all_monsters[random.randint(0, 8)]
-
-
-def generate_boss(character):
-    if character["Level"] != 3:
-        print("You have to reach Level 3 to fight the boss!")
-    else:
-        boss = {"name": "Madara Uchiha",
-                "ability": [{"title": "Attack", "attack": 12}, {"title": "Shuriken", "attack": 22},
-                            {"title": "Paper Bomb", "attack": 20}, {"title": "Recovery", "heal": 20}],
-                "HP": 350}
-        return boss
-
-
-def generate_elite():
-    elite = {
-        "name": "Orochimaru",
-        "ability": [{"title": "Attack", "attack": 12}, {"title": "Recovery", "heal": 20}],
-        "HP": 350,
-        "MaxHP": 350
-    }
-    return elite
 
 
 def experience(character, monster_xp):
@@ -68,9 +56,6 @@ def display_jutsu(character: dict):
         return 'q'
 
     return jutsu_selection[int(jutsu_choice) - 1]
-
-
-
 
 
 def display_normal_attack_sequence(character, monster):
