@@ -16,7 +16,7 @@ def generate_elite_monster() -> dict:
     :return: a dictionary store all the monster information
     >>> generate_elite_monster()
     {'name': 'Orochimaru', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Recovery', 'heal': 20}], \
-'HP': 350, 'MaxHP': 350, 'XP': 100}
+    'HP': 350, 'MaxHP': 350, 'XP': 100}
     """
     try:
         with open("monsters/elite_monster.json") as fileobject:
@@ -37,7 +37,7 @@ def generate_boss_monster() -> dict:
     :return: a dictionary store all the boss information
     >>> generate_boss_monster()
     {'name': 'Madara Uchiha', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Susanoo', 'attack': 28}, \
-{'title': 'Gunbai', 'attack': 20}, {'title': 'Recovery', 'heal': 20}], 'HP': 350, 'XP': 0}
+    {'title': 'Gunbai', 'attack': 20}, {'title': 'Recovery', 'heal': 20}], 'HP': 350, 'XP': 0}
     """
     try:
         with open("monsters/boss.json") as fileobject:
