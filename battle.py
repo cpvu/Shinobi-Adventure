@@ -104,9 +104,13 @@ def display_battle_menu():
 
 def display_jutsu(character: dict):
     """
+    Print the jutsu as enumeration with numbers start from 1.
 
-    :param character:
-    :return:
+    :param character: a dictionary have a key "Jutsu"
+    :precondition: character must be a dictionary have a key "Jutsu", the value is a dictionary that length greater than
+                   zero
+    :post condition: print the jutsu as enumeration with numbers start from 1 and return a tuple
+    :return: a tuple, first element is a number list, second element is string list.
     """
     jutsu_selection = [key for key in character["Jutsu"].keys()]
     jutsu_numbers = []
@@ -117,6 +121,19 @@ def display_jutsu(character: dict):
 
 
 def get_jutsu_choice(character):
+    """
+    Return character's jutsu key according to user input.
+
+    :param character: a dictionary have a key "Jutsu"
+    :precondition: character must be a dictionary have a key "Jutsu", the value is a dictionary that length greater than
+                   zero
+    :post condition: if user input is not the number in jutsu enumeration and not "q", prompt user "Invalid input" and
+                     ask user to input again
+    :post condition: if user input is "q", return "q"
+    :post condition: if user input is in the numbers of jutsu enumeration, return the matched key of "jutsu" value in
+                     character
+    :return: return "q" if user input "q", otherwise, return the matched key of "jutsu" value in character
+    """
     jutsu_numbers_and_selection = display_jutsu(character)
     jutsu_choice = (input("Select your jutsu or enter q to go back"))
     if jutsu_choice == 'q':
@@ -146,6 +163,17 @@ def display_battle_hp(character, monster):
 
 
 def monster_damage_sequence(character, monster):
+    """
+    Decide the monster behavior according to the ability.
+
+    :param character: a dictionary have an "HP" key
+    :param monster: a dictionary have "ability" key that value is a dictionary
+    :precondition: character must be a dictionary that as least have an "HP" key, which value is a positive integer
+    :precondition: monster must be a dictionary have "ability" key that value is a dictionary, which has "title", "heal"
+                   or "attack" keys, all values should be positive integer
+    :post condition: if monster "ability" is "Recovery", add 20 to monster "HP"
+    :post condition: if monster "ability" is not "Recovery", reduce character "HP" according to the monster "attack"
+    """
     monster_attacks_sequence = itertools.cycle(monster["ability"])
     monster_attack = next(monster_attacks_sequence)
     if monster_attack["title"] == "Recovery":
@@ -159,6 +187,20 @@ def monster_damage_sequence(character, monster):
 
 
 def character_damage_sequence(character, monster, character_attack="slice"):
+    """
+    Reduce monster "HP" according to character_attack.
+
+    :param character: a dictionary has "Jutsu", "Attack", "HP", "Magic", "Chakra" keys
+    :param monster: a dictionary has "HP" key
+    :param character_attack: a string, with a default value of "slice"
+    :precondition: character is a dictionary has "Jutsu", "Attack", "HP", "Magic", "Chakra" keys
+    :precondition: monster is a dictionary has "HP" key
+    :post condition: if character_attack in "Jutsu" list, reduce the monster "HP" according to the "Jutsu" attack and
+                     "Magic"
+    :post condition: if character_attack not in "Jutsu" list, reduce the monster "HP" according to character "Attack"
+    :post condition: if character_attack in "Jutsu" list and character "Chakra" lower than the damage, prompt not enough
+                     chakra message
+    """
     character_damage = random.randint(0, 10) + character["Attack"]
 
     if character_attack in character["Jutsu"].keys():
@@ -180,6 +222,15 @@ def character_damage_sequence(character, monster, character_attack="slice"):
 
 
 def heal_character(character):
+    """
+    Increase character "HP", maintain the same if character "Chakra" is not enough or "HP" already full.
+
+    :param character: a dictionary has "Magic", "Chakra", "HP" keys
+    :precondition: character must be a dictionary that has "Magic", "Chakra", "HP" keys
+    :post condition: increase character "HP", if "Chakra" is higher than increase amount
+    :post condition: maintain same character "HP", if "Chakra" is lower than increase amount
+    :post condition: maintain same character "HP", if "HP" is higher than or equal to "Max HP"
+    """
     heal_amount = int(character["Magic"] * 2)
     chakra_used = int(heal_amount * 1.2 - character["Magic"])
     if character["Chakra"] < chakra_used:
@@ -198,6 +249,29 @@ def heal_character(character):
 
 
 def execute_battle_protocol(character, monster):
+    """
+    Execute the battle sequence according to user input.
+
+    :param character: a dictionary
+    :param monster: a dictionary
+    :precondition: character must be a dictionary has "X", "Y", "Level", "XP", "XPToLevelUp", "HP", "Max HP", "Chakra",
+                   "Max Chakra", "Attack", "Magic", "Luck", "Goal Achieved", "Jutsu" as keys
+    :precondition: monster must be a dictionary has "name", "HP", "XP", "ability" as keys
+    :post condition: validate the user input is one of '1', '2', '3', '4'
+    :post condition: if user input is "1", call character_damage_sequence(), monster_damage_sequence(),
+                     display_battle_hp() functions as sequence
+    :post condition: if user input is "2", call get_jutsu_choice() and check the return value, if it's "q",
+                     start from the while loop again, if it's not "q" call character_damage_sequence(),
+                     monster_damage_sequence(), display_battle_hp() functions as sequence
+    :post condition: if user input is "3", call heal_character(), monster_damage_sequence(),
+                     display_battle_hp() functions as sequence
+    :post condition: if user input is "4", generate a random number, then check if monster is "Madara Uchiha" or
+                     "Orochimaru", if it is and the random number is lower than 6 prompt user escape successful and call
+                     describe_current_location(), else prompt user escape failed and monster_damage_sequence()
+                     display_battle_hp() functions as sequence
+    :post condition: if monster "HP" lower than zero, print "The foe has been vanquished!" and call
+                     experience() describe_current_location() functions as sequence
+    """
     while monster["HP"] > 0 and character["HP"] > 0:
         display_battle_menu()
         battle_action = input("What will you do?")
