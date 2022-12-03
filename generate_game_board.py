@@ -20,7 +20,7 @@ def generate_room_type():
         return "Empty Room"
     elif 45 <= random_number < 59:
         return "Game Event"
-    elif 60 <= random_number <= 100:
+    else:
         return "Monster Battle"
 
 
