@@ -79,7 +79,7 @@ def check_for_event(board, character):
     :return: a string value, representing the event type stored on the board coordinate
     """
     if board[(character["X"], character["Y"])] == "Game Event":
-        return "Game Event"
+        return "GameEvent"
     elif board[(character["X"], character["Y"])] == "Monster Battle":
         return "Battle"
     elif board[(character["X"], character["Y"])] == "Health room":
@@ -191,7 +191,7 @@ def execute_event_protocol(character, event):
         monster = generate_monster(character)
         print(f"A {monster['name']} has appeared before you!")
         execute_battle_protocol(character, monster)
-    elif event == "Game Event":
+    elif event == "GameEvent":
         generate_game_events(character)
     elif event == "Health":
         execute_health_room(character)
