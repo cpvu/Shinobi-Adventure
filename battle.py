@@ -77,7 +77,7 @@ def experience(character: dict, monster_xp: int):
     """
     Add monster_xp to the value of "XP" key in character and print relevant information.
 
-    :param character: a dictionary that contain an "XP" key, type of the value of "XP" key is integer
+    :param character: a dictionary that contain an "XP" key, type of the value of "XP" key is positive integer
     :param monster_xp: a positive integer
     :precondition: character must be a dictionary that contain at least an "XP" key, the value of "XP" key must be a
                    positive integer
@@ -109,6 +109,7 @@ def display_jutsu(character: dict):
     :param character: a dictionary have a key "Jutsu"
     :precondition: character must be a dictionary have a key "Jutsu", the value is a dictionary that length greater than
                    zero
+    :precondition: the key of "Jutsu" value dictionary must be a tuple that has three non-empty string elements.
     :post condition: print the jutsu as enumeration with numbers start from 1 and return a tuple
     :return: a tuple, first element is a number list, second element is string list.
     """
