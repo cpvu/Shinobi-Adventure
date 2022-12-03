@@ -6,16 +6,19 @@ from character_location import printing_map
 import itertools
 
 
-def generate_monster(character, special_monster=None):
-    if special_monster == "boss":
-        with open("monsters/boss.json") as fileobject:
-            boss_monster = json.load(fileobject)
-            return boss_monster
-    elif special_monster == "elite_monster":
-        with open("monsters/elite_monster.json") as fileobject:
-            elite_monster = json.load(fileobject)
-            return elite_monster
+def generate_elite_monster():
+    with open("monsters/elite_monster.json") as fileobject:
+        elite_monster = json.load(fileobject)
+        return elite_monster
 
+
+def generate_boss_monster():
+    with open("monsters/elite_monster.json") as fileobject:
+        elite_monster = json.load(fileobject)
+        return elite_monster
+
+
+def generate_monster(character):
     with open("monsters/monsters.json") as fileobject:
         all_monsters = json.load(fileobject)
         if character["Level"] == 1:
