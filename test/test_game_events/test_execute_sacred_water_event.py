@@ -3,6 +3,7 @@ from game_events import execute_sacred_water_event
 from unittest.mock import patch
 import io
 
+
 class TestExecuteSacredWaterEvent(TestCase):
     @patch("random.randint", return_value=15)
     @patch('sys.stdout', new_callable=io.StringIO)
@@ -13,9 +14,9 @@ class TestExecuteSacredWaterEvent(TestCase):
         actual_output = mock_output.getvalue()
 
         expected_output = "You grow quite thirsty.\n" \
-                   "There is a river nearby, a villager tells you that drinking this water brings about good fortune.\n"\
-                   "You take a handful of the water and drink it.\n"\
-                   "The water had something in it and made you feel sick! You take 15 damage.\n"
+            "There is a river nearby, a villager tells you that drinking this water brings about good fortune.\n"\
+            "You take a handful of the water and drink it.\n"\
+            "The water had something in it and made you feel sick! You take 15 damage.\n"
 
         actual_character = character
         expected_character = {"HP": 63}
