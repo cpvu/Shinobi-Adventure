@@ -10,7 +10,7 @@ class TestDisplayJutsu(TestCase):
     def test_display_jutsu_for_one_element_for_key_jutsu(self, mock_output):
         character = {"Jutsu": {("Katon", "Unleash a fiery blast of chakra!", "A powerful fire blast"): 22}}
         display_jutsu(character)
-        expected = "1 - Katon - A powerful fire blast"
+        expected = "1 - Katon - A powerful fire blast\n"
         self.assertEqual(expected, mock_output.getvalue())
 
     @patch("sys.stdout", new_callable=io.StringIO)
