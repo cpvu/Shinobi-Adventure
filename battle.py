@@ -7,6 +7,17 @@ from character_location import describe_current_location
 
 
 def generate_elite_monster():
+    """
+    Read and generate the elite monster from elite_monster.json file.
+
+    :precondition: the elite monster information must store as an object in json file
+    :post condition: read the elite monster information from json object and return it as dictionary
+    :raises FileNotFoundError: if 'elite_monster.json' not exist or not exist in the 'monsters' directory
+    :return: a dictionary store all the monster information
+    >>> generate_elite_monster()
+    {'name': 'Orochimaru', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Recovery', 'heal': 20}], \
+'HP': 350, 'MaxHP': 350, 'XP': 100}
+    """
     try:
         with open("monsters/elite_monster.json") as fileobject:
             elite_monster = json.load(fileobject)
@@ -17,6 +28,17 @@ def generate_elite_monster():
 
 
 def generate_boss_monster():
+    """
+    Read and generate the boss from boss.json file.
+
+    :precondition: boss information must store as an object in json file
+    :post condition: read the boss information from json object and return it as dictionary
+    :raises FileNotFoundError: if 'boss.json' not exist or not exist in the 'monsters' directory
+    :return: a dictionary store all the boss information
+    >>> generate_boss_monster()
+    {'name': 'Madara Uchiha', 'ability': [{'title': 'Attack', 'attack': 12}, {'title': 'Susanoo', 'attack': 28}, \
+{'title': 'Gunbai', 'attack': 20}, {'title': 'Recovery', 'heal': 20}], 'HP': 350, 'XP': 0}
+    """
     try:
         with open("monsters/boss.json") as fileobject:
             boss = json.load(fileobject)
@@ -27,6 +49,16 @@ def generate_boss_monster():
 
 
 def generate_monster(character):
+    """
+    Read and generate a dictionary that contain a random monsters information from monsters.json file.
+
+    :param character: a dictionary that must have a "Level" key, value must between [1, 3]
+    :precondition: monsters information must store as objects in an array in json file
+    :post condition: return a dictionary that store a random monster information in 'monsters.json' file according to
+                     the character "Level" value
+    :raises FileNotFoundError: if 'monsters.json' not exist or not exist in the 'monsters' directory
+    :return: a dictionary that contain a random monster information in 'monsters.json' file
+    """
     try:
         with open("monsters/monsters.json") as fileobject:
             all_monsters = json.load(fileobject)
