@@ -115,6 +115,11 @@ def display_final_boss_ascii_art():
 
 
 def display_final_boss_dialogue():
+    """
+       Print the final boss dialogue.
+
+       :post-condition: print out the final boss's dialogue.
+    """
     print("You've arrived to the the Uchiha Clan's dominion. He emits his powerful chakra and suddenly everything "
           "around him craters.")
     print("So.. you are the one. I heard of an unknown shinobi who travelled across this great land in hopes to defeat "
@@ -123,6 +128,20 @@ def display_final_boss_dialogue():
 
 
 def validate_boss_fight(character):
+    """
+    Validate if the character dictionary object is Level 3
+
+
+    :param character: a dictionary object
+    :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
+                    "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
+                    containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                    a dictionary object.
+    :post-condition: return a boolean value, True if the character key "Level" value is equal to 3.
+    :post-condition: print a statement to indicate the character has not met the condition and return a boolean value,
+                     False
+    :return: a boolean value, True if the character key "Level" is equal to 3
+    """
     if character["Level"] == 3:
         return True
     else:
@@ -132,6 +151,11 @@ def validate_boss_fight(character):
 
 
 def elite_monster_dialogue():
+    """
+    Print the elite monster room dialogue.
+
+    :post-condition: print out the elite monster's dialogue.
+    """
     print("You arrive at a path with a vast forest ahead. Stepping forward, you suddenly hear the sounds of hissing.")
     print("Suddenly, snakes appear to be falling from the trees. A dark figure emerges out of the forest.")
     print("Orochimaru: Hsss I am Orochimaru the legendary snake sannin. Your chakra smells very fruitful...")
