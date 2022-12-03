@@ -21,7 +21,7 @@ def generate_jutsu():
     :return: a tuple object, containing string values that represent the jutsu name and descriptors
     """
     try:
-        with open("monsters/jutsus.txt") as fileobject:
+        with open("jutsus/jutsus.txt") as fileobject:
             all_jutsus = []
     except FileNotFoundError:
         print("jutsus.txt does not exist or is not in the correct directory!")
