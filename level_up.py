@@ -4,7 +4,8 @@ def character_has_leveled(character):
     :param character: a dictionary object
     :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
                    "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
-                   containing integer values, and  "Jutsu" containing a dictionary object.
+                   containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                   a dictionary object.
     :post-condition: Return True if the value in the key "XP" is greater than the value in key "XPToLevelUp" and the
                     value in the key "Level" is less than 3 in the character dictionary object
     :return: Return True if the integer value in the key "XP" is greater than the integer value in the key "XPToLevelUp"
@@ -20,7 +21,8 @@ def assign_stats(character):
     :param character: a dictionary object
     :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
                    "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
-                   containing integer values, and  "Jutsu" containing a dictionary object.
+                   containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                   a dictionary object.
     :post-condition: Contains a sub function to map the relevant combat stats by a multiplier
     """
     combat_stats = ["Max HP", "HP", "Attack", "Magic", "Chakra", "Max Chakra"]
