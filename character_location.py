@@ -56,14 +56,6 @@ def validate_move(board, character, direction):
     :post-condition: Evaluate if the argument direction to a corresponding increase of an integer of one in the key
                      X or Y in character is in the board dictionary character
     :return: a boolean value, True if the direction and new character coordinate is valid in the board dictionary
-
-    >>> board ={(0, 0): "Empty Room", (0, 1): "Empty Room",(1, 1): "Empty Room"}
-    >>> character = {"X": 0, "Y": 0}
-    >>> direction = "North"
-    >>> validate_move(board, character, direction)
-    True
-
-
     """
     if direction == "North" and (character["X"], character["Y"] + 1) in board.keys():
         return True
