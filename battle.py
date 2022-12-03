@@ -110,20 +110,24 @@ def display_jutsu(character: dict):
     """
     jutsu_selection = [key for key in character["Jutsu"].keys()]
     jutsu_numbers = []
-
     for jutsu in enumerate(jutsu_selection, 1):
         print(f"{jutsu[0]} - {jutsu[1][0]} - {jutsu[1][2]}")
         jutsu_numbers.append(str(jutsu[0]))
+    return jutsu_numbers, jutsu_selection
 
+
+def get_jutsu_choice(character):
+    jutsu_numbers_and_selection = display_jutsu(character)
     jutsu_choice = (input("Select your jutsu or enter q to go back"))
     if jutsu_choice == 'q':
         return 'q'
-
-    if jutsu_choice not in jutsu_numbers:
+    while jutsu_choice not in jutsu_numbers_and_selection[0]:
         print("Invalid input")
-        return 'q'
+        jutsu_choice = (input("Select your jutsu or enter q to go back"))
+        if jutsu_choice == 'q':
+            return 'q'
 
-    return jutsu_selection[int(jutsu_choice) - 1]
+    return jutsu_numbers_and_selection[1][int(jutsu_choice) - 1]
 
 
 def display_battle_hp(character, monster):
@@ -206,7 +210,7 @@ def execute_battle_protocol(character, monster):
             monster_damage_sequence(character, monster)
             display_battle_hp(character, monster)
         elif int(battle_action) == 2:
-            jutsu_name = display_jutsu(character)
+            jutsu_name = get_jutsu_choice(character)
             if jutsu_name == 'q':
                 continue
             character_damage_sequence(character, monster, jutsu_name)
