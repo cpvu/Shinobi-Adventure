@@ -1,6 +1,3 @@
-import random
-
-
 def character_has_leveled(character):
     """
     Determine if character is ready to level.
