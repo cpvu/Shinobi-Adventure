@@ -7,6 +7,8 @@ A01293003
 
 Contains functions for leveling up the character.
 """
+
+
 def character_has_leveled(character):
     """
     Determine if character is ready to level.
@@ -19,21 +21,20 @@ def character_has_leveled(character):
                     value in the key "Level" is less than 3 in the character dictionary object
     :return: Return True if the integer value in the key "XP" is greater than the integer value in the key "XPToLevelUp"
 
-    >>> character = {"XP": 105 , "XPToLevelUp": 100, "Level": 2}
-    >>> character_has_leveled(character)
+    >>> test_character = {"XP": 105 , "XPToLevelUp": 100, "Level": 2}
+    >>> character_has_leveled(test_character)
     True
 
-    >>> character = {"XP": 90 , "XPToLevelUp": 100, "Level": 1}
-    >>> character_has_leveled(character)
+    >>> test_character = {"XP": 90 , "XPToLevelUp": 100, "Level": 1}
+    >>> character_has_leveled(test_character)
 
 
-    >>> character = {"XP": 100 , "XPToLevelUp": 100, "Level": 1}
-    >>> character_has_leveled(character)
+    >>> test_character = {"XP": 100 , "XPToLevelUp": 100, "Level": 1}
+    >>> character_has_leveled(test_character)
     True
 
-    >>> character = {"XP": 120 , "XPToLevelUp": 100, "Level": 3}
-    >>> character_has_leveled(character)
-
+    >>> test_character = {"XP": 120 , "XPToLevelUp": 100, "Level": 3}
+    >>> character_has_leveled(test_character)
     """
     if character["XP"] >= character["XPToLevelUp"] and character["Level"] < 3:
         return True
