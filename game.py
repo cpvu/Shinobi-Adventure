@@ -249,8 +249,6 @@ def game():
     describe_current_location(character)
     achieved_goal = False
     while not achieved_goal:
-        # prompt the current location
-        # describe_current_location(board, character)
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
         if valid_move:

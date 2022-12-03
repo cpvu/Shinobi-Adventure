@@ -24,11 +24,12 @@ def generate_jutsu():
     """
     try:
         with open("jutsus/jutsus.txt") as fileobject:
-            all_jutsus = []
+            content = fileobject.readlines()
     except FileNotFoundError:
         print("jutsus.txt does not exist or is not in the correct directory!")
     else:
-        for line in fileobject.readlines():
+        all_jutsus = []
+        for line in content:
             jutsu_pair = line.strip().split(',')
             all_jutsus.append((jutsu_pair[0], jutsu_pair[1], jutsu_pair[2]))
         return all_jutsus[random.randint(0, len(all_jutsus) - 1)]
@@ -144,7 +145,7 @@ def execute_good_fortune_event(character):
                containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
                a dictionary object.
     :post-condition: print game event dialogue
-    :post-condition: assign an increase of a integer value of 25 to the character dictionary objects key value "Attack"
+    :post-condition: assign an increase of an integer value of 25 to the character dictionary objects key value "Attack"
                      and "Magic"
     """
     print("You stroll along and look for a place to sleep for the night.")
