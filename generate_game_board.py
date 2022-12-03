@@ -4,6 +4,7 @@ import random
 def generate_room_type():
     """
     Generate a random number corresponding to a string value representing a room type in the game board.
+
     :post-condition: Return a string value, "Empty Room" if the random number generated is greater than or equal to 0
                      and less than 45
     :post-condition: Return a string value, "Treasure Room" if the random number generated is greater than or equal to
