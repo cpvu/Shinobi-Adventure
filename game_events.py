@@ -192,3 +192,14 @@ def generate_game_events(character):
         return execute_sacred_water_event(character)
     elif random_number == 100:
         return execute_good_fortune_event(character)
+
+
+def main():
+    """
+    Drive the program.
+    """
+    pass
+
+
+if __name__ == '__main__':
+    main()

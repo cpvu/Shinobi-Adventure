@@ -38,3 +38,14 @@ blast of chakra!', 'A powerful fire blast'): 22}}
                  "Goal Achieved": False,
                  "Jutsu": {("Katon", "Unleash a fiery blast of chakra!", "A powerful fire blast"): 22}}
     return character
+
+
+def main():
+    """
+    Drive the program.
+    """
+    pass
+
+
+if __name__ == '__main__':
+    main()

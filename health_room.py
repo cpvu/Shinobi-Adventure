@@ -46,3 +46,14 @@ def execute_health_room(character: dict):
     print(f'{character["Name"]} - HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
           f'{character["Max Chakra"]}')
     check_health_and_chakra_max(character)
+
+
+def main():
+    """
+    Drive the program.
+    """
+    pass
+
+
+if __name__ == '__main__':
+    main()

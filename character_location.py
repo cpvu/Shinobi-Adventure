@@ -104,3 +104,14 @@ def move_character(character: dict, direction: str):
         character["X"] += 1
     elif direction == "West":
         character["X"] -= 1
+
+
+def main():
+    """
+    Drive the program.
+    """
+    pass
+
+
+if __name__ == '__main__':
+    main()

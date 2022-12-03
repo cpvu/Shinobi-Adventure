@@ -314,3 +314,14 @@ def execute_battle_protocol(character: dict, monster: dict):
         print("The foe has been vanquished!")
         experience(character, monster["XP"])
         describe_current_location(character)
+
+
+def main():
+    """
+    Drive the program.
+    """
+    pass
+
+
+if __name__ == '__main__':
+    main()

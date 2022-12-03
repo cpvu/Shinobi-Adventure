@@ -54,3 +54,14 @@ def generate_game_board(row: int, column: int) -> dict:
     board[(5, 5)] = "Elite room"
 
     return board
+
+
+def main():
+    """
+    Drive the program.
+    """
+    pass
+
+
+if __name__ == '__main__':
+    main()
