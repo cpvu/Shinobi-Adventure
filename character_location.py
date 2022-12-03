@@ -1,13 +1,13 @@
 def describe_current_location(character):
     """
-         Print the game board.
+    Print the game board.
 
-         :param character: a dictionary object
-         :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X",
-                         "Y", "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
-                         containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
-                         a dictionary object.
-         :post-condition: Print the default game map for a 10 by 10 board.
+    :param character: a dictionary object
+    :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X",
+                 "Y", "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
+                 containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                 a dictionary object.
+    :post-condition: Print the default game map for a 10 by 10 board.
     """
     default_map = ["+ + + + + + + + + B", "+ + + + + + + + + +", "+ + H + + + + H + +", "+ + + + + + + + + +",
                    "+ + + + + E + + + +", "+ + + + + + + + + +", "+ + + + + + + + + +", "+ + H + + + + H + +",
@@ -62,6 +62,20 @@ def validate_move(board, character, direction):
 
 
 def move_character(character, direction):
+    """
+    Evaluate the user inputted direction to generate the new character board coordinates.
+
+    :param character: a dictionary object
+    :param direction: a string object
+    :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X",
+                    "Y", "Level", "XP", "XPToLevelUp", "HP", "Chakra", "Max Chakra", "Attack", "Magic", "Luck"
+                    containing integer values, "Goal achieved" containing a boolean, and "Jutsu" containing
+                    a dictionary object.
+    :pre-condition: direction must be a string value containing "North", "South", "West", or "East"
+    :post-condition: Adjust the character key pair coordinate by an integer value of one that corresponds to the
+                     argument direction
+    :return: a string value, representing the direction corresponding to the chosen user input
+    """
     if direction == "North":
         character["Y"] += 1
     elif direction == "South":
@@ -71,4 +85,5 @@ def move_character(character, direction):
     elif direction == "West":
         character["X"] -= 1
     else:
-        print('Something wrong')
+        print('Invalid direction chosen!')
+
