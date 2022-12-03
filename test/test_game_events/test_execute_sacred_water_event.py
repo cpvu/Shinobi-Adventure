@@ -3,7 +3,7 @@ from game_events import execute_sacred_water_event
 from unittest.mock import patch
 import io
 
-class Test(TestCase):
+class TestExecuteSacredWaterEvent(TestCase):
     @patch("random.randint", return_value=15)
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_execute_sacred_water_event(self, mock_output, random_number_generator):
