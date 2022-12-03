@@ -6,7 +6,21 @@ import io
 
 class TestValidateBossFight(TestCase):
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_character_not_level_three(self, mock_output):
+    def test_character_level_one(self, mock_output):
+        character = {"Level": 1}
+        expected = validate_boss_fight(character)
+        actual = False
+
+        expected_output = "You've arrived at the Uchiha Dominion, but you are not strong enough yet.. Return here " \
+                          "once you have reached Level 3!\n"
+
+        actual_output = mock_output.getvalue()
+
+        self.assertEqual(expected_output, actual_output)
+        self.assertEqual(expected, actual)
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    def test_character_level_two(self, mock_output):
         character = {"Level": 2}
         expected = validate_boss_fight(character)
         actual = False
