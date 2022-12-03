@@ -10,7 +10,7 @@ Contains functions for healing room event.
 import time
 
 
-def check_health_and_chakra_max(character):
+def check_health_and_chakra_max(character: dict):
     """
     Re-assign character health and chakra to the character's current Max HP/Max Chakra.
 
@@ -27,7 +27,7 @@ def check_health_and_chakra_max(character):
         character["Chakra"] = character["Max Chakra"]
 
 
-def execute_health_room(character):
+def execute_health_room(character: dict):
     """
     :param character: a dictionary object
     :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",

@@ -9,7 +9,7 @@ Contains functions for leveling up the character.
 """
 
 
-def character_has_leveled(character):
+def character_has_leveled(character: dict) -> bool:
     """
     Determine if character is ready to level.
     :param character: a dictionary object
@@ -40,7 +40,7 @@ def character_has_leveled(character):
         return True
 
 
-def assign_stats(character):
+def assign_stats(character: dict):
     """
     Assign an increase in the character dictionary's combat related stats.
 
@@ -53,7 +53,7 @@ def assign_stats(character):
     """
     combat_stats = ["Max HP", "HP", "Attack", "Magic", "Chakra", "Max Chakra"]
 
-    def map_stats(stat_key, stat_value):
+    def map_stats(stat_key: str, stat_value: int) -> tuple:
         """
         Increase the stat_value by 30 percent for the stat_key in combat_stats.
 
@@ -73,7 +73,7 @@ def assign_stats(character):
         character[key] = value
 
 
-def assign_experience(character):
+def assign_experience(character: dict):
     """
     Assign an increase in level and adjust experience to character dictionary object.
 
@@ -93,7 +93,7 @@ def assign_experience(character):
     character["XPToLevelUp"] += (character["XPToLevelUp"] / 2 + 100)
 
 
-def execute_character_glow_up(character):
+def execute_character_glow_up(character: dict):
     """
     Execute character level up protocol.
 

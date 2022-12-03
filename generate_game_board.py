@@ -10,7 +10,7 @@ Contains functions to generate game board.
 import random
 
 
-def generate_room_type():
+def generate_room_type() -> str:
     """
     Generate a random number corresponding to a string value representing a room type in the game board.
 
@@ -33,7 +33,7 @@ def generate_room_type():
         return "Monster Battle"
 
 
-def generate_game_board(row, column):
+def generate_game_board(row: int, column: int) -> dict:
     """
     Generate a dictionary object with key value pairs representing the coordinates of the game board.
 

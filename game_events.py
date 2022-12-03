@@ -111,7 +111,7 @@ def execute_neutral_event():
     print("Turns out there's nothing inside.. Darn!")
 
 
-def execute_sacred_water_event(character):
+def execute_sacred_water_event(character: dict):
     """
     Print dialogue for game event that inflicts damage to character HP.
 
@@ -135,7 +135,7 @@ def execute_sacred_water_event(character):
     print(f"The water had something in it and made you feel sick! You take {random_damage} damage.")
 
 
-def execute_good_fortune_event(character):
+def execute_good_fortune_event(character: dict):
     """
     Execute rare game event to buff character attack and magic stats.
 

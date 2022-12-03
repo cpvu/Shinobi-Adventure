@@ -9,7 +9,7 @@ Contains functions for character and board locations.
 """
 
 
-def describe_current_location(character):
+def describe_current_location(character: dict):
     """
     Print the game board.
 
@@ -31,7 +31,7 @@ def describe_current_location(character):
         print(line)
 
 
-def get_user_choice():
+def get_user_choice() -> str:
     """
     Return the user choice for the direction that the character will move.
 
@@ -51,7 +51,7 @@ def get_user_choice():
     return direction[int(user_choice)]
 
 
-def validate_move(board, character, direction):
+def validate_move(board: dict, character: dict, direction: str):
     """
     Validate the user inputted direction on the game board.
 
@@ -81,7 +81,7 @@ def validate_move(board, character, direction):
         return False
 
 
-def move_character(character, direction):
+def move_character(character: dict, direction: str):
     """
     Evaluate the user inputted direction to generate the new character board coordinates.
 
