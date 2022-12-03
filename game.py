@@ -10,7 +10,7 @@ Contains main game file and functions.
 import time
 from generate_game_board import generate_game_board
 from battle import generate_monster, execute_battle_protocol, generate_elite_monster, generate_boss_monster
-from game_events import generate_game_events
+from game_events import generate_game_events, execute_open_sacred_scroll
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
 from level_up import character_has_leveled, execute_character_glow_up, assign_experience, assign_stats
@@ -164,6 +164,16 @@ def elite_monster_dialogue():
     print("You've heard stories of this before in the village you visted, it looks like you have to defeat Orochimaru!")
 
 
+def elite_monster_defeat():
+    """
+    Print the elite monster room dialogue for defeat.
+
+    :post-condition: print out the elite monster's defeat dialogue.
+    """
+    print("This cant be.... I've been defeated..")
+    print("Orochimarus body dissipates, leaving behind a scroll.")
+
+
 def execute_event_protocol(character, event):
     """
     Execute the game event that corresponds to the character's board location.
@@ -181,7 +191,7 @@ def execute_event_protocol(character, event):
         monster = generate_monster(character)
         print(f"A {monster['name']} has appeared before you!")
         execute_battle_protocol(character, monster)
-    elif event == "Treasure":
+    elif event == "Game Event":
         generate_game_events(character)
     elif event == "Health":
         execute_health_room(character)
@@ -193,6 +203,8 @@ def execute_event_protocol(character, event):
     elif event == "Elite":
         elite_monster_dialogue()
         execute_battle_protocol(character, generate_elite_monster())
+        elite_monster_defeat()
+        execute_open_sacred_scroll()
     else:
         print("You've entered an empty room. There appears to be nothing in here..")
         return
