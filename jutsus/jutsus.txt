@@ -3,3 +3,4 @@ Suition,An aura of water surges from your hand. The enemy is blasted away.,A ove
 Raiton,A rumbling occurs. Lightning strikes from the sky at your enemy!,A strike of lightning
 Rasengan,Spherical chakra channels into your left arm. You enemy is hit and spirals away.,A powerful ball of spiraling chakra
 Fuuton,A blast of wind emerges and blows the enemy away.,A destructive gust of wind
+Mokton,Shattering the earth beneath. Your enemy falls and is buried.,Devastating earth jutsu
