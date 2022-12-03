@@ -1,26 +1,38 @@
 import random
 import json
 import time
+import itertools
 from health_room import check_health_and_chakra_max
 from character_location import describe_current_location
-import itertools
 
 
 def generate_elite_monster():
-    with open("monsters/elite_monster.json") as fileobject:
-        elite_monster = json.load(fileobject)
+    try:
+        with open("monsters/elite_monster.json") as fileobject:
+            elite_monster = json.load(fileobject)
+    except FileNotFoundError:
+        print(f"The file 'elite_monster.json' not exist or not in the monsters directory.")
+    else:
         return elite_monster
 
 
 def generate_boss_monster():
-    with open("monsters/elite_monster.json") as fileobject:
-        elite_monster = json.load(fileobject)
-        return elite_monster
+    try:
+        with open("monsters/boss.json") as fileobject:
+            boss = json.load(fileobject)
+    except FileNotFoundError:
+        print(f"The file 'boss.json' not exist or not in the monsters directory.")
+    else:
+        return boss
 
 
 def generate_monster(character):
-    with open("monsters/monsters.json") as fileobject:
-        all_monsters = json.load(fileobject)
+    try:
+        with open("monsters/monsters.json") as fileobject:
+            all_monsters = json.load(fileobject)
+    except FileNotFoundError:
+        print(f"The file 'monsters.json' not exist or not in the monsters directory.")
+    else:
         if character["Level"] == 1:
             return all_monsters[random.randint(0, 2)]
         elif character["Level"] == 2:
