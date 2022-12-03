@@ -76,9 +76,9 @@ def check_for_event(board, character):
                      key tuples in the board object to return a string value representing the event on the coordinate
     :return: a string value, representing the event type stored on the board coordinate
     """
-    if board[(character["X"], character["Y"])] == "Treasure Room":
-        return "Treasure"
-    elif board[(character["X"], character["Y"])] == "Monster Room":
+    if board[(character["X"], character["Y"])] == "Game Event":
+        return "Game Event"
+    elif board[(character["X"], character["Y"])] == "Monster Battle":
         return "Battle"
     elif board[(character["X"], character["Y"])] == "Health room":
         return "Health"
