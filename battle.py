@@ -61,19 +61,6 @@ def display_jutsu(character: dict):
     return jutsu_selection[int(jutsu_choice) - 1]
 
 
-def display_normal_attack_sequence(character, monster):
-    monster_attack = random.randint(0, 5) + monster["Attack"]
-    character_attack = random.randint(0, 10) + character["Attack"]
-
-    print(f"You inflicted {character_attack} damage with a slash")
-    time.sleep(0.5)
-    print(f'The {monster["name"]} flaps you for {monster_attack} damage!')
-    time.sleep(0.5)
-
-    monster["HP"] -= character_attack
-    character["HP"] -= monster_attack
-
-
 def display_battle_hp(character, monster):
     print(f'{monster["name"]} - HP:{monster["HP"]}HP')
     print(f'{character["Name"]} - HP: {character["HP"]}/{character["Max HP"]} Chakra:{character["Chakra"]}/'
