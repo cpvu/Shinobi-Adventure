@@ -1,3 +1,10 @@
+"""
+Calvin Vu
+A01291758
+
+Hanxiao Mao
+A01293003
+"""
 import random
 
 
@@ -45,4 +52,3 @@ def generate_game_board(row, column):
     board[(5, 5)] = "Elite room"
 
     return board
-
