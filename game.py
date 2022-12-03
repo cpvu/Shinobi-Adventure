@@ -7,7 +7,7 @@ A01293003
 """
 import time
 from makeboard import make_board
-from battle import generate_monster, execute_battle_protocol, generate_boss, generate_elite
+from battle import generate_monster, execute_battle_protocol, generate_elite_monster, generate_boss_monster
 from treasureroom import execute_treasure_event
 from character_creation import make_character
 from character_location import describe_current_location, get_user_choice, validate_move, move_character
@@ -119,6 +119,20 @@ def display_final_boss_dialogue():
     print("I am Madara Uchiha and you will not stop me from casting this eternal dream state.")
 
 
+def validate_boss_fight(character):
+    if character["Level"] == 3:
+        return True
+    else:
+        print("You've arrived at the Uchiha Dominion, but you are not strong enough yet.. Return here"
+              "once you have reached Level 3!")
+        return False
+
+def elite_monster_dialogue():
+    print("You arrive at a path with a vast forest ahead. Stepping forward, you suddenly hear the sounds of hissing.")
+    print("Suddenly, snakes appear to be falling from the trees. A dark figure emerges out of the forest.")
+    print("Orochimaru: Hsss I am Orochimaru the legendary snake sannin. Your chakra smells very fruitful...")
+    print("You've heard stories of this before in the village you visted, it looks like you have to defeat Orochimaru!")
+
 def execute_event_protocol(character, event):
     """
     Execute the game event that corresponds to the character's board location.
@@ -141,15 +155,13 @@ def execute_event_protocol(character, event):
     elif event == "Health":
         execute_health_room(character)
     elif event == "Boss":
-        boss = generate_boss(character)
-        if boss:
+        if validate_boss_fight(character):
             display_final_boss_dialogue()
-            execute_battle_protocol(character, boss)
+            execute_battle_protocol(character, generate_boss_monster())
             character["Goal Achieved"] = True
     elif event == "Elite":
-        elite = generate_elite()
-        print("Orochimaru is ready to fight you! No escape for boss fight!")
-        execute_battle_protocol(character, elite)
+        elite_monster_dialogue()
+        execute_battle_protocol(character, generate_elite_monster())
     else:
         print("You've entered an empty room. There appears to be nothing in here..")
         return
@@ -159,6 +171,7 @@ def execute_victory():
     print("Its all over... I can't believe I did it.")
     print("Roars of victory yell out as the world witnessed your conquer.")
     print("It seems as though you are fading away and now its time to go back to your world...")
+
 
 def check_if_goal_attained(character):
     if character["Goal Achieved"]:
