@@ -43,7 +43,7 @@ def game_introduction():
     time.sleep(0.5)
 
 
-def game_over(character):
+def game_over(character: dict):
     """
     Return True if the character's HP is below 0 or below.
 
@@ -63,7 +63,7 @@ def game_over(character):
     return False
 
 
-def check_for_event(board, character):
+def check_for_event(board: dict, character: dict) -> str:
     """
     Evaluate the character's current board coordinates to execute the corresponding event on the game board.
 
@@ -129,7 +129,7 @@ def display_final_boss_dialogue():
     print("I am Madara Uchiha and you will not stop me from casting this eternal dream state.")
 
 
-def validate_boss_fight(character):
+def validate_boss_fight(character: dict):
     """
     Validate if the character dictionary object is Level 3
 
@@ -174,7 +174,7 @@ def elite_monster_defeat():
     print("Orochimarus body dissipates, leaving behind a scroll.")
 
 
-def execute_event_protocol(character, event):
+def execute_event_protocol(character: dict, event: str):
     """
     Execute the game event that corresponds to the character's board location.
 
@@ -222,7 +222,7 @@ def execute_victory():
     print("It seems as though you are fading away and now its time to go back to your world...")
 
 
-def check_if_goal_attained(character):
+def check_if_goal_attained(character: dict) -> bool:
     """
     :param character: a dictionary object
     :pre-condition: character must be a dictionary object containing key values: "Name" containing a string, X", "Y",
