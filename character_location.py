@@ -1,4 +1,4 @@
-def printing_map(character):
+def describe_current_location(character):
     """
          Print the game board.
 
@@ -8,7 +8,7 @@ def printing_map(character):
          :post-condition: Print the default game map for a 10 by 10 board.
     """
     default_map = ["+ + + + + + + + + B", "+ + + + + + + + + +", "+ + H + + + + H + +", "+ + + + + + + + + +",
-                   "+ + + + + + + + + +", "+ + + + + M + + + +", "+ + + + + + + + + +", "+ + H + + + + H + +",
+                   "+ + + + + E + + + +", "+ + + + + + + + + +", "+ + + + + + + + + +", "+ + H + + + + H + +",
                    "+ + + + + + + + + +", "+ + + + + + + + + +"]
     current_map = default_map[:]
     target_row = current_map[9 - character["Y"]].split(' ')
@@ -16,21 +16,6 @@ def printing_map(character):
     current_map[9 - character["Y"]] = " ".join(target_row)
     for line in current_map:
         print(line)
-
-
-def describe_current_location(character):
-    """
-         Print the character's current coordinates and game board.
-
-         :param character: a dictionary object
-         :pre-condition: character must be a dictionary object containing key pair values relevant to the character's
-                         name, current coordinates relative to the game board, combat stats, and abilities.
-         :post-condition: Print the values stored in the key "X" and "Y" of the character object
-         :post-condition: Print the game board with the character's corresponding location
-     """
-    # we should return the whole board as a map?
-    print(f"X: {character['X']},Y: {character['Y']}")
-    printing_map(character)
 
 
 def get_user_choice():

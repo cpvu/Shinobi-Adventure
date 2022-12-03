@@ -2,7 +2,7 @@ import random
 import json
 import time
 from health_room import check_health_and_chakra_max
-from character_location import printing_map
+from character_location import describe_current_location
 import itertools
 
 
@@ -110,7 +110,7 @@ def character_damage_sequence(character, monster, character_attack="slice"):
         character_attack = character_attack[0]
 
     print(f"You inflicted {character_damage} damage with {character_attack}")
-    time.sleep(1)
+    time.sleep(0.5)
     monster["HP"] -= character_damage
 
 
@@ -159,7 +159,7 @@ def execute_battle_protocol(character, monster):
             escape_chance = random.randint(1, 10)
             if (monster['name'] != "Madara Uchiha" or monster['name'] != "Orochimaru") and escape_chance < 6:
                 print("You have escaped battle!")
-                printing_map(character)
+                describe_current_location(character)
                 break
             else:
                 print("Escape failed!")
@@ -169,3 +169,4 @@ def execute_battle_protocol(character, monster):
     if monster["HP"] <= 0:
         print("The foe has been vanquished!")
         experience(character, monster["XP"])
+        describe_current_location(character)
