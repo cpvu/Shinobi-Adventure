@@ -1,8 +1,5 @@
-# 1510-Lab-9
-
-Every program needs a README.md
-
-This is written in markdown. Read about markdown here: [markdowncheatsheet](https://www.markdownguide.org/cheat-sheet/)
+# Shinobi Adventure Game
+A python text based shinobi game inspired by the adventures of Naruto.
 
 ## Group Member:
 ### Calvin Vu
